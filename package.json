@@ -23,7 +23,7 @@
 		"theme": "light"
 	},
 	"activationEvents": [
-		"onCommand:chocolatey.new",
+		"onCommand:cicd.editorconfig"
 	],
 	"engines": {
 		"vscode": "^1.24.0"
@@ -34,19 +34,37 @@
 	"contributes": {
 		"configuration": [
 			{
+				"type": "object",
+				"title": "CI/CD Assets Configuration",
+				"properties": {
+					"cicd.urls": {
+						"type": "object",
+						"default": {
+							"editorconfig": "https://raw.githubusercontent.com/gep13/CI-CD-assets/master/.editorconfig"
+						},
+						"description": "The URL's to download files from.",
+						"properties": {
+							"editorconfig": {
+								"type": "string",
+								"description": "The URL to download the EditorConfig file from.",
+								"default": "https://raw.githubusercontent.com/gep13/CI-CD-assets/master/.editorconfig"
+							}
+						}
+					}
+				}
 			}
 		],
 		"commands": [
 			{
-				"command": "chocolatey.new",
-				"title": "Chocolatey: Create new Chocolatey package"
+				"command": "cicd.editorconfig",
+				"title": "CICD: Download EditorConfig File"
 			}
 		]
 	},
 	"scripts": {
 		"vscode:prepublish": "npm run compile",
-		"compile": "%APPDATA%/npm/tsc -p ./",
-		"watch": "%APPDATA%/npm/tsc -watch -p ./",
+		"compile": "tsc -p ./",
+		"watch": "tsc -watch -p ./",
 		"postinstall": "node ./node_modules/vscode/bin/install",
 		"test": "npm run compile && node ./node_modules/vscode/bin/test"
 	},
@@ -64,5 +82,8 @@
 		"typemoq": "^2.1.0",
 		"typescript": "^2.6.1",
 		"vscode": "^1.1.6"
+	},
+	"dependencies": {
+		"request": "^2.87.0"
 	}
 }
