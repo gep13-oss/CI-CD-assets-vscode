@@ -6,6 +6,7 @@ import * as fs from "fs";
 export function activate(): void {
     // register Commands
     commands.registerCommand("cicd.editorconfig", async () => downloadEditorConfigFile());
+    commands.registerCommand("cicd.appveyor", async () => downloadAppVeyorConfigFile());
 }
 
 async function checkForExisting(path: string): Promise<boolean> {
@@ -71,9 +72,38 @@ async function downloadEditorConfigFile(): Promise<void> {
     var result = await downloadFile(uri, file);
 
     if(result) {
-      window.showInformationMessage("EditorConfig File downloaded correctly.");
+     window.showInformationMessage("EditorConfig File downloaded correctly.");
     } else {
       window.showErrorMessage("Error downloading EditorConfig File.");
+    }
+  }
+}
+
+async function downloadAppVeyorConfigFile(): Promise<void> {
+  var workspaceRootPath = checkForWorkspace();
+  if(workspaceRootPath !== "") {
+    var appveyorFilePath = path.join(workspaceRootPath, '.appveyor.yml');
+    var ready = await checkForExisting(appveyorFilePath);
+
+    if(!ready) {
+      return;
+    }
+
+    var file = fs.createWriteStream(appveyorFilePath);
+    var config = workspace.getConfiguration('cicd');
+
+    if (!config) {
+      window.showErrorMessage("Could not find CI/CD Configuration.");
+      return;
+    }
+
+    var uri = config.urls.appveyor;
+    var result = await downloadFile(uri, file);
+
+    if(result) {
+      window.showInformationMessage("AppVeyor File downloaded correctly.");
+    } else {
+      window.showErrorMessage("Error downloading AppVeyor File.");
     }
   }
 }

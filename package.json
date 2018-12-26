@@ -23,7 +23,8 @@
 		"theme": "light"
 	},
 	"activationEvents": [
-		"onCommand:cicd.editorconfig"
+		"onCommand:cicd.editorconfig",
+		"onCommand:cicd.appveyor"
 	],
 	"engines": {
 		"vscode": "^1.24.0"
@@ -40,7 +41,8 @@
 					"cicd.urls": {
 						"type": "object",
 						"default": {
-							"editorconfig": "https://raw.githubusercontent.com/gep13/CI-CD-assets/master/.editorconfig"
+							"editorconfig": "https://raw.githubusercontent.com/gep13/CI-CD-assets/master/.editorconfig",
+							"appveyor": "https://raw.githubusercontent.com/gep13/CI-CD-assets/master/.appveyor.yml"
 						},
 						"description": "The URL's to download files from.",
 						"properties": {
@@ -48,6 +50,11 @@
 								"type": "string",
 								"description": "The URL to download the EditorConfig file from.",
 								"default": "https://raw.githubusercontent.com/gep13/CI-CD-assets/master/.editorconfig"
+							},
+							"appveyor": {
+								"type": "string",
+								"description": "The URL to download the AppVeyor file from.",
+								"default": "https://raw.githubusercontent.com/gep13/CI-CD-assets/master/.appveyor.yml"
 							}
 						}
 					}
@@ -58,6 +65,10 @@
 			{
 				"command": "cicd.editorconfig",
 				"title": "CICD: Download EditorConfig File"
+			},
+			{
+				"command": "cicd.appveyor",
+				"title": "CICD: Download AppVeyor File"
 			}
 		]
 	},
