@@ -24,7 +24,8 @@
 	},
 	"activationEvents": [
 		"onCommand:cicd.editorconfig",
-		"onCommand:cicd.appveyor"
+		"onCommand:cicd.appveyor",
+		"onCommand:cicd.gitattributes"
 	],
 	"engines": {
 		"vscode": "^1.24.0"
@@ -42,7 +43,8 @@
 						"type": "object",
 						"default": {
 							"editorconfig": "https://raw.githubusercontent.com/gep13/CI-CD-assets/master/.editorconfig",
-							"appveyor": "https://raw.githubusercontent.com/gep13/CI-CD-assets/master/.appveyor.yml"
+							"appveyor": "https://raw.githubusercontent.com/gep13/CI-CD-assets/master/.appveyor.yml",
+							"gitattributes": "https://raw.githubusercontent.com/gep13/CI-CD-assets/master/.gitattributes"
 						},
 						"description": "The URL's to download files from.",
 						"properties": {
@@ -55,6 +57,11 @@
 								"type": "string",
 								"description": "The URL to download the AppVeyor file from.",
 								"default": "https://raw.githubusercontent.com/gep13/CI-CD-assets/master/.appveyor.yml"
+							},
+							"gitattributes": {
+								"type": "string",
+								"description": "The URL to download the .gitattributes file from.",
+								"default": "https://raw.githubusercontent.com/gep13/CI-CD-assets/master/.gitattributes"
 							}
 						}
 					}
@@ -69,6 +76,10 @@
 			{
 				"command": "cicd.appveyor",
 				"title": "CICD: Download AppVeyor File"
+			},
+			{
+				"command": "cicd.gitattributes",
+				"title": "CICD: Download .gitattributes File"
 			}
 		]
 	},
