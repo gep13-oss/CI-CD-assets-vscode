@@ -45,7 +45,7 @@ You can find the documentation that is available for this project [here](https:/
 
 If you would like to see any features added for this VS Code Extension, feel free to raise an [issue](https://github.com/gep13/CI-CD-assets-vscode/issues), and if possible, a follow up pull request.
 
-You can also join in the Gitter Chat [![Join the chat at https://gitter.im/gep13/ci-cd-assets](https://badges.gitter.im/gep13/ci-cd-assets.svg)](https://gitter.im/gep13/ci-cd-assets?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+You can also join in the Gitter Chat [![Join the chat at https://gitter.im/gep13/ci-cd-assets/community](https://badges.gitter.im/gep13/ci-cd-assets/community.svg)](https://gitter.im/gep13/ci-cd-assets/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 ## Releases
 
