@@ -30,7 +30,8 @@
 		"onCommand:cicd.mergify",
 		"onCommand:cicd.travis",
 		"onCommand:cicd.gitreleasemanager",
-		"onCommand:cicd.wyam"
+		"onCommand:cicd.wyam",
+		"onCommand:cicd.github"
 	],
 	"engines": {
 		"vscode": "^1.24.0"
@@ -54,7 +55,25 @@
 							"mergify": "https://raw.githubusercontent.com/gep13/CI-CD-assets/master/.mergify.yml",
 							"travis": "https://raw.githubusercontent.com/gep13/CI-CD-assets/master/.travis.yml",
 							"gitreleasemanager": "https://raw.githubusercontent.com/gep13/CI-CD-assets/master/GitReleaseManager.yaml",
-							"wyam": "https://raw.githubusercontent.com/gep13/CI-CD-assets/master/config.wyam"
+							"wyam": "https://raw.githubusercontent.com/gep13/CI-CD-assets/master/config.wyam",
+							"github": [
+								{
+									"name": "CODEOFCONDUCT.md",
+									"url": "https://raw.githubusercontent.com/gep13/CI-CD-assets/master/.github/CODEOFCONDUCT.md"
+								},
+								{
+									"name": "CONTRIBUTING.md",
+									"url": "https://raw.githubusercontent.com/gep13/CI-CD-assets/master/.github/CONTRIBUTING.md"
+								},
+								{
+									"name": "ISSUE_TEMPLATE.md",
+									"url": "https://raw.githubusercontent.com/gep13/CI-CD-assets/master/.github/ISSUE_TEMPLATE.md"
+								},
+								{
+									"name": "PULL_REQUEST_TEMPLATE.md",
+									"url": "https://raw.githubusercontent.com/gep13/CI-CD-assets/master/.github/PULL_REQUEST_TEMPLATE.md"
+								}
+							]
 						},
 						"description": "The URL's to download files from.",
 						"properties": {
@@ -97,6 +116,16 @@
 								"type": "string",
 								"description": "The URL to download the config.wyam file from",
 								"default": "https://raw.githubusercontent.com/gep13/CI-CD-assets/master/config.wyam"
+							},
+							"github": {
+								"type": "array",
+								"description": "Array of URL's to be placed in .github folder",
+								"default": [
+									"https://raw.githubusercontent.com/gep13/CI-CD-assets/master/.github/CODEOFCONDUCT.md",
+									"https://raw.githubusercontent.com/gep13/CI-CD-assets/master/.github/CONTRIBUTING.md",
+									"https://raw.githubusercontent.com/gep13/CI-CD-assets/master/.github/ISSUE_TEMPLATE.md",
+									"https://raw.githubusercontent.com/gep13/CI-CD-assets/master/.github/PULL_REQUEST_TEMPLATE.md"
+								]
 							}
 						}
 					}
@@ -135,6 +164,10 @@
 			{
 				"command": "cicd.wyam",
 				"title": "CICD: Download config.wyam File"
+			},
+			{
+				"command": "cicd.github",
+				"title": "CICD: Download .github Files"
 			}
 		]
 	},
