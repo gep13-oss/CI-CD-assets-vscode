@@ -10,6 +10,7 @@ export function activate(): void {
     commands.registerCommand("cicd.gitattributes", async () => downloadGitAttributesFile());
     commands.registerCommand("cicd.gitignore", async () => downloadGitIgnoreFile());
     commands.registerCommand("cicd.mergify", async () => downloadMergifyFile());
+    commands.registerCommand("cicd.travis", async () => downloadTravisFile());
 }
 
 async function checkForExisting(path: string): Promise<boolean> {
@@ -194,6 +195,35 @@ async function downloadMergifyFile(): Promise<void> {
       window.showInformationMessage(".mergify.yml File downloaded correctly.");
     } else {
       window.showErrorMessage("Error downloading .mergify.yml File.");
+    }
+  }
+}
+
+async function downloadTravisFile(): Promise<void> {
+  var workspaceRootPath = checkForWorkspace();
+  if(workspaceRootPath !== "") {
+    var travisFilePath = path.join(workspaceRootPath, '.travis.yml');
+    var ready = await checkForExisting(travisFilePath);
+
+    if(!ready) {
+      return;
+    }
+
+    var file = fs.createWriteStream(travisFilePath);
+    var config = workspace.getConfiguration('cicd');
+
+    if (!config) {
+      window.showErrorMessage("Could not find CI/CD Configuration.");
+      return;
+    }
+
+    var uri = config.urls.travis;
+    var result = await downloadFile(uri, file);
+
+    if(result) {
+      window.showInformationMessage(".travis.yml File downloaded correctly.");
+    } else {
+      window.showErrorMessage("Error downloading .travis.yml File.");
     }
   }
 }

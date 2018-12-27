@@ -27,7 +27,8 @@
 		"onCommand:cicd.appveyor",
 		"onCommand:cicd.gitattributes",
 		"onCommand:cicd.gitignore",
-		"onCommand:cicd.mergify"
+		"onCommand:cicd.mergify",
+		"onCommand:cicd.travis"
 	],
 	"engines": {
 		"vscode": "^1.24.0"
@@ -48,7 +49,8 @@
 							"appveyor": "https://raw.githubusercontent.com/gep13/CI-CD-assets/master/.appveyor.yml",
 							"gitattributes": "https://raw.githubusercontent.com/gep13/CI-CD-assets/master/.gitattributes",
 							"gitignore": "https://raw.githubusercontent.com/gep13/CI-CD-assets/master/.gitignore",
-							"mergify": "https://raw.githubusercontent.com/gep13/CI-CD-assets/master/.mergify.yml"
+							"mergify": "https://raw.githubusercontent.com/gep13/CI-CD-assets/master/.mergify.yml",
+							"travis": "https://raw.githubusercontent.com/gep13/CI-CD-assets/master/.travis.yml"
 						},
 						"description": "The URL's to download files from.",
 						"properties": {
@@ -76,6 +78,11 @@
 								"type": "string",
 								"description": "The URL to download the .mergify.yml file from",
 								"default": "https://raw.githubusercontent.com/gep13/CI-CD-assets/master/.mergify.yml"
+							},
+							"travis": {
+								"type": "string",
+								"description": "The URL to download the .travis.yml file from",
+								"default": "https://raw.githubusercontent.com/gep13/CI-CD-assets/master/.travis.yml"
 							}
 						}
 					}
@@ -102,6 +109,10 @@
 			{
 				"command": "cicd.mergify",
 				"title": "CICD: Download .mergify.yml File"
+			},
+			{
+				"command": "cicd.travis",
+				"title": "CICD: Download .travis.yml File"
 			}
 		]
 	},
