@@ -18,12 +18,20 @@ CI/CD Assets is a collection of files that are useful when setting up a CI/CD pi
 
 For more information about [CI/CD Assets](https://github.com/gep13/CI-CD-assets), please see the [source code repository](https://github.com/gep13/CI-CD-assets).
 
-
 ## Commands
 
 The CI/CD Assets Visual Studio Code provides the following commands:
 
-* `Chocolatey: Create new Chocolatey package` to create the default templated Chocolatey package at the root of current workspace.
+* `CICD: Download .editorconfig file`
+* `CICD: Download .appveyor.yml file`
+* `CICD: Download .gitattributes file`
+* `CICD: Download .gitignore file`
+* `CICD: Download .mergify.yml file`
+* `CICD: Download .travis.yml file`
+* `CICD: Download GitReleaseManager.yaml file`
+* `CICD: Download config.wyam file`
+* `CICD: Download .github files`
+* `CICD: Download all files`
 
 ## Resources
 
@@ -33,7 +41,7 @@ Short YouTube videos of each of the releases of this extension can be found in t
 
 You can either install this extension in the normal way, or you can choose to install using Chocolatey:
 
-```
+```powershell
 choco install ci-cd-assets-vscode
 ```
 
