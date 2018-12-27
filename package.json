@@ -31,7 +31,8 @@
 		"onCommand:cicd.travis",
 		"onCommand:cicd.gitreleasemanager",
 		"onCommand:cicd.wyam",
-		"onCommand:cicd.github"
+		"onCommand:cicd.github",
+		"onCommand:cicd.all"
 	],
 	"engines": {
 		"vscode": "^1.24.0"
@@ -135,39 +136,43 @@
 		"commands": [
 			{
 				"command": "cicd.editorconfig",
-				"title": "CICD: Download .editorconfig File"
+				"title": "CICD: Download .editorconfig file"
 			},
 			{
 				"command": "cicd.appveyor",
-				"title": "CICD: Download .appveyor.yml File"
+				"title": "CICD: Download .appveyor.yml file"
 			},
 			{
 				"command": "cicd.gitattributes",
-				"title": "CICD: Download .gitattributes File"
+				"title": "CICD: Download .gitattributes file"
 			},
 			{
 				"command": "cicd.gitignore",
-				"title": "CICD: Download .gitignore File"
+				"title": "CICD: Download .gitignore file"
 			},
 			{
 				"command": "cicd.mergify",
-				"title": "CICD: Download .mergify.yml File"
+				"title": "CICD: Download .mergify.yml file"
 			},
 			{
 				"command": "cicd.travis",
-				"title": "CICD: Download .travis.yml File"
+				"title": "CICD: Download .travis.yml file"
 			},
 			{
 				"command": "cicd.gitreleasemanager",
-				"title": "CICD: Download GitReleaseManager.yaml File"
+				"title": "CICD: Download GitReleaseManager.yaml file"
 			},
 			{
 				"command": "cicd.wyam",
-				"title": "CICD: Download config.wyam File"
+				"title": "CICD: Download config.wyam file"
 			},
 			{
 				"command": "cicd.github",
-				"title": "CICD: Download .github Files"
+				"title": "CICD: Download .github files"
+			},
+			{
+				"command": "cicd.all",
+				"title": "CICD: Download all files."
 			}
 		]
 	},

@@ -14,6 +14,7 @@ export function activate(): void {
     commands.registerCommand("cicd.gitreleasemanager", async () => downloadGitReleaseManagerFile());
     commands.registerCommand("cicd.wyam", async () => downloadWyamFile());
     commands.registerCommand("cicd.github", async () => downloadGitHubFiles());
+    commands.registerCommand("cicd.all", async () => downloadAllFiles());
 }
 
 async function checkForExisting(path: string): Promise<boolean> {
@@ -328,4 +329,16 @@ async function downloadGitHubFiles(): Promise<void> {
       });
     });
   }
+}
+
+async function downloadAllFiles(): Promise<void> {
+  downloadAppVeyorConfigFile()
+    .then(downloadEditorConfigFile)
+    .then(downloadGitAttributesFile)
+    .then(downloadGitHubFiles)
+    .then(downloadGitIgnoreFile)
+    .then(downloadGitReleaseManagerFile)
+    .then(downloadMergifyFile)
+    .then(downloadTravisFile)
+    .then(downloadWyamFile);
 }

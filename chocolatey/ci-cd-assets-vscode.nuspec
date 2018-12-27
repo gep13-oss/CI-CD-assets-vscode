@@ -23,15 +23,16 @@ This extension brings support for CI/CD Assets to Visual Studio Code.
 ## Commands
 The CI/CD Assets Visual Studio Code provides the following commands:
 
-- `CICD: Download .editorconfig File`
-- `CICD: Download .appveyor.yml File`
-- `CICD: Download .gitattributes File`
-- `CICD: Download .gitignore File`
-- `CICD: Download .mergify.yml File`
-- `CICD: Download .travis.yml File`
-- `CICD: Download GitReleaseManager.yaml File`
-- `CICD: Download config.wyam File`
-- `CICD: Download .github Files`
+- `CICD: Download .editorconfig file`
+- `CICD: Download .appveyor.yml file`
+- `CICD: Download .gitattributes file`
+- `CICD: Download .gitignore file`
+- `CICD: Download .mergify.yml file`
+- `CICD: Download .travis.yml file`
+- `CICD: Download GitReleaseManager.yaml file`
+- `CICD: Download config.wyam file`
+- `CICD: Download .github files`
+- `CICD: Download all files`
     </description>
     <releaseNotes>
 Full release notes found on [GitHub Release Page](https://github.com/gep13/CI-CD-assets-vscode/releases)</releaseNotes>
