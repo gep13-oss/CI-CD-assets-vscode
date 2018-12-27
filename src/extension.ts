@@ -12,6 +12,7 @@ export function activate(): void {
     commands.registerCommand("cicd.mergify", async () => downloadMergifyFile());
     commands.registerCommand("cicd.travis", async () => downloadTravisFile());
     commands.registerCommand("cicd.gitreleasemanager", async () => downloadGitReleaseManagerFile());
+    commands.registerCommand("cicd.wyam", async () => downloadWyamFile());
 }
 
 async function checkForExisting(path: string): Promise<boolean> {
@@ -254,6 +255,35 @@ async function downloadGitReleaseManagerFile(): Promise<void> {
       window.showInformationMessage("GitReleaseManager.yaml File downloaded correctly.");
     } else {
       window.showErrorMessage("Error downloading GitReleaseManager.yaml File.");
+    }
+  }
+}
+
+async function downloadWyamFile(): Promise<void> {
+  var workspaceRootPath = checkForWorkspace();
+  if(workspaceRootPath !== "") {
+    var wyamFilePath = path.join(workspaceRootPath, 'config.wyam');
+    var ready = await checkForExisting(wyamFilePath);
+
+    if(!ready) {
+      return;
+    }
+
+    var file = fs.createWriteStream(wyamFilePath);
+    var config = workspace.getConfiguration('cicd');
+
+    if (!config) {
+      window.showErrorMessage("Could not find CI/CD Configuration.");
+      return;
+    }
+
+    var uri = config.urls.wyam;
+    var result = await downloadFile(uri, file);
+
+    if(result) {
+      window.showInformationMessage("config.wyam File downloaded correctly.");
+    } else {
+      window.showErrorMessage("Error downloading config.wyam File.");
     }
   }
 }

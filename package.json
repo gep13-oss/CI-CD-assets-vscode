@@ -29,7 +29,8 @@
 		"onCommand:cicd.gitignore",
 		"onCommand:cicd.mergify",
 		"onCommand:cicd.travis",
-		"onCommand:cicd.gitreleasemanager"
+		"onCommand:cicd.gitreleasemanager",
+		"onCommand:cicd.wyam"
 	],
 	"engines": {
 		"vscode": "^1.24.0"
@@ -52,7 +53,8 @@
 							"gitignore": "https://raw.githubusercontent.com/gep13/CI-CD-assets/master/.gitignore",
 							"mergify": "https://raw.githubusercontent.com/gep13/CI-CD-assets/master/.mergify.yml",
 							"travis": "https://raw.githubusercontent.com/gep13/CI-CD-assets/master/.travis.yml",
-							"gitreleasemanager": "https://raw.githubusercontent.com/gep13/CI-CD-assets/master/GitReleaseManager.yaml"
+							"gitreleasemanager": "https://raw.githubusercontent.com/gep13/CI-CD-assets/master/GitReleaseManager.yaml",
+							"wyam": "https://raw.githubusercontent.com/gep13/CI-CD-assets/master/config.wyam"
 						},
 						"description": "The URL's to download files from.",
 						"properties": {
@@ -90,6 +92,11 @@
 								"type": "string",
 								"description": "The URL to download the GitReleaseManager.yaml file from",
 								"default": "https://raw.githubusercontent.com/gep13/CI-CD-assets/master/GitReleaseManager.yaml"
+							},
+							"wyam": {
+								"type": "string",
+								"description": "The URL to download the config.wyam file from",
+								"default": "https://raw.githubusercontent.com/gep13/CI-CD-assets/master/config.wyam"
 							}
 						}
 					}
@@ -124,6 +131,10 @@
 			{
 				"command": "cicd.gitreleasemanager",
 				"title": "CICD: Download GitReleaseManager.yaml File"
+			},
+			{
+				"command": "cicd.wyam",
+				"title": "CICD: Download config.wyam File"
 			}
 		]
 	},
