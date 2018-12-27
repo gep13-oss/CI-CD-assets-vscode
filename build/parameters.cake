@@ -107,7 +107,7 @@ public class BuildParameters
     {
         get
         {
-            return "Version " + Version.SemVersion + " of the CI/CD Assets VSCode Extension has just been released, https://marketplace.visualstudio.com/items?itemName=gep13.ci-cd-assets-vscode. @chocolateynuget @code  Full release notes: https://github.com/gep13/CI-CD-assets-vscode/releases/tag/" + Version.SemVersion;
+            return "Version " + Version.SemVersion + " of the CI/CD Assets VSCode Extension has just been released, https://marketplace.visualstudio.com/items?itemName=gep13.ci-cd-assets-vscode. @code  Full release notes: https://github.com/gep13/CI-CD-assets-vscode/releases/tag/" + Version.SemVersion;
         }
     }
 
