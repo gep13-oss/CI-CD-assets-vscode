@@ -8,6 +8,7 @@ export function activate(): void {
     commands.registerCommand("cicd.editorconfig", async () => downloadEditorConfigFile());
     commands.registerCommand("cicd.appveyor", async () => downloadAppVeyorConfigFile());
     commands.registerCommand("cicd.gitattributes", async () => downloadGitAttributesFile());
+    commands.registerCommand("cicd.gitignore", async () => downloadGitIgnoreFile());
 }
 
 async function checkForExisting(path: string): Promise<boolean> {
@@ -134,6 +135,35 @@ async function downloadGitAttributesFile(): Promise<void> {
       window.showInformationMessage(".gitattributes File downloaded correctly.");
     } else {
       window.showErrorMessage("Error downloading .gitattributes File.");
+    }
+  }
+}
+
+async function downloadGitIgnoreFile(): Promise<void> {
+  var workspaceRootPath = checkForWorkspace();
+  if(workspaceRootPath !== "") {
+    var gitIgnoreFilePath = path.join(workspaceRootPath, '.gitignore');
+    var ready = await checkForExisting(gitIgnoreFilePath);
+
+    if(!ready) {
+      return;
+    }
+
+    var file = fs.createWriteStream(gitIgnoreFilePath);
+    var config = workspace.getConfiguration('cicd');
+
+    if (!config) {
+      window.showErrorMessage("Could not find CI/CD Configuration.");
+      return;
+    }
+
+    var uri = config.urls.gitignore;
+    var result = await downloadFile(uri, file);
+
+    if(result) {
+      window.showInformationMessage(".gitignore File downloaded correctly.");
+    } else {
+      window.showErrorMessage("Error downloading .gitignore File.");
     }
   }
 }

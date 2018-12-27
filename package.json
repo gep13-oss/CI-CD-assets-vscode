@@ -25,7 +25,8 @@
 	"activationEvents": [
 		"onCommand:cicd.editorconfig",
 		"onCommand:cicd.appveyor",
-		"onCommand:cicd.gitattributes"
+		"onCommand:cicd.gitattributes",
+		"onCommand:cicd.gitignore"
 	],
 	"engines": {
 		"vscode": "^1.24.0"
@@ -44,7 +45,8 @@
 						"default": {
 							"editorconfig": "https://raw.githubusercontent.com/gep13/CI-CD-assets/master/.editorconfig",
 							"appveyor": "https://raw.githubusercontent.com/gep13/CI-CD-assets/master/.appveyor.yml",
-							"gitattributes": "https://raw.githubusercontent.com/gep13/CI-CD-assets/master/.gitattributes"
+							"gitattributes": "https://raw.githubusercontent.com/gep13/CI-CD-assets/master/.gitattributes",
+							"gitignore": "https://raw.githubusercontent.com/gep13/CI-CD-assets/master/.gitignore"
 						},
 						"description": "The URL's to download files from.",
 						"properties": {
@@ -62,6 +64,11 @@
 								"type": "string",
 								"description": "The URL to download the .gitattributes file from.",
 								"default": "https://raw.githubusercontent.com/gep13/CI-CD-assets/master/.gitattributes"
+							},
+							"gitignore": {
+								"type": "string",
+								"description": "The URL to download the .gitignore file from.",
+								"default": "https://raw.githubusercontent.com/gep13/CI-CD-assets/master/.gitignore"
 							}
 						}
 					}
@@ -80,6 +87,10 @@
 			{
 				"command": "cicd.gitattributes",
 				"title": "CICD: Download .gitattributes File"
+			},
+			{
+				"command": "cicd.gitignore",
+				"title": "CICD: Download .gitignore File"
 			}
 		]
 	},
