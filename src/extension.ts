@@ -9,6 +9,7 @@ export function activate(): void {
     commands.registerCommand("cicd.appveyor", async () => downloadAppVeyorConfigFile());
     commands.registerCommand("cicd.gitattributes", async () => downloadGitAttributesFile());
     commands.registerCommand("cicd.gitignore", async () => downloadGitIgnoreFile());
+    commands.registerCommand("cicd.mergify", async () => downloadMergifyFile());
 }
 
 async function checkForExisting(path: string): Promise<boolean> {
@@ -164,6 +165,35 @@ async function downloadGitIgnoreFile(): Promise<void> {
       window.showInformationMessage(".gitignore File downloaded correctly.");
     } else {
       window.showErrorMessage("Error downloading .gitignore File.");
+    }
+  }
+}
+
+async function downloadMergifyFile(): Promise<void> {
+  var workspaceRootPath = checkForWorkspace();
+  if(workspaceRootPath !== "") {
+    var mergifyFilePath = path.join(workspaceRootPath, '.mergify.yml');
+    var ready = await checkForExisting(mergifyFilePath);
+
+    if(!ready) {
+      return;
+    }
+
+    var file = fs.createWriteStream(mergifyFilePath);
+    var config = workspace.getConfiguration('cicd');
+
+    if (!config) {
+      window.showErrorMessage("Could not find CI/CD Configuration.");
+      return;
+    }
+
+    var uri = config.urls.mergify;
+    var result = await downloadFile(uri, file);
+
+    if(result) {
+      window.showInformationMessage(".mergify.yml File downloaded correctly.");
+    } else {
+      window.showErrorMessage("Error downloading .mergify.yml File.");
     }
   }
 }

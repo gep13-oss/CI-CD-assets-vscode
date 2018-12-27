@@ -26,7 +26,8 @@
 		"onCommand:cicd.editorconfig",
 		"onCommand:cicd.appveyor",
 		"onCommand:cicd.gitattributes",
-		"onCommand:cicd.gitignore"
+		"onCommand:cicd.gitignore",
+		"onCommand:cicd.mergify"
 	],
 	"engines": {
 		"vscode": "^1.24.0"
@@ -46,7 +47,8 @@
 							"editorconfig": "https://raw.githubusercontent.com/gep13/CI-CD-assets/master/.editorconfig",
 							"appveyor": "https://raw.githubusercontent.com/gep13/CI-CD-assets/master/.appveyor.yml",
 							"gitattributes": "https://raw.githubusercontent.com/gep13/CI-CD-assets/master/.gitattributes",
-							"gitignore": "https://raw.githubusercontent.com/gep13/CI-CD-assets/master/.gitignore"
+							"gitignore": "https://raw.githubusercontent.com/gep13/CI-CD-assets/master/.gitignore",
+							"mergify": "https://raw.githubusercontent.com/gep13/CI-CD-assets/master/.mergify.yml"
 						},
 						"description": "The URL's to download files from.",
 						"properties": {
@@ -69,6 +71,11 @@
 								"type": "string",
 								"description": "The URL to download the .gitignore file from.",
 								"default": "https://raw.githubusercontent.com/gep13/CI-CD-assets/master/.gitignore"
+							},
+							"mergify": {
+								"type": "string",
+								"description": "The URL to download the .mergify.yml file from",
+								"default": "https://raw.githubusercontent.com/gep13/CI-CD-assets/master/.mergify.yml"
 							}
 						}
 					}
@@ -78,11 +85,11 @@
 		"commands": [
 			{
 				"command": "cicd.editorconfig",
-				"title": "CICD: Download EditorConfig File"
+				"title": "CICD: Download .editorconfig File"
 			},
 			{
 				"command": "cicd.appveyor",
-				"title": "CICD: Download AppVeyor File"
+				"title": "CICD: Download .appveyor.yml File"
 			},
 			{
 				"command": "cicd.gitattributes",
@@ -91,6 +98,10 @@
 			{
 				"command": "cicd.gitignore",
 				"title": "CICD: Download .gitignore File"
+			},
+			{
+				"command": "cicd.mergify",
+				"title": "CICD: Download .mergify.yml File"
 			}
 		]
 	},
