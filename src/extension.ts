@@ -13,6 +13,7 @@ export function activate(): void {
     commands.registerCommand("cicd.travis", async () => downloadTravisFile());
     commands.registerCommand("cicd.gitreleasemanager", async () => downloadGitReleaseManagerFile());
     commands.registerCommand("cicd.wyam", async () => downloadWyamFile());
+    commands.registerCommand("cicd.github", async () => downloadGitHubFiles());
 }
 
 async function checkForExisting(path: string): Promise<boolean> {
@@ -285,5 +286,46 @@ async function downloadWyamFile(): Promise<void> {
     } else {
       window.showErrorMessage("Error downloading config.wyam File.");
     }
+  }
+}
+
+async function downloadGitHubFiles(): Promise<void> {
+  var workspaceRootPath = checkForWorkspace();
+  if(workspaceRootPath !== "") {
+    var gitHubFolderPath = path.join(workspaceRootPath, ".github");
+    if(!fs.existsSync(gitHubFolderPath)) {
+      fs.mkdirSync(gitHubFolderPath);
+    }
+
+    var config = workspace.getConfiguration('cicd');
+
+    if (!config) {
+      window.showErrorMessage("Could not find CI/CD Configuration.");
+      return;
+    }
+
+    const gitHubFiles = config.urls.github;
+
+    Promise.all(gitHubFiles.map(async gitHubFile => {
+      var gitHubFilePath = path.join(workspaceRootPath, ".github", gitHubFile.name);
+      var ready = await checkForExisting(gitHubFilePath);
+
+      if(!ready) {
+        return;
+      }
+
+      let file = fs.createWriteStream(gitHubFilePath);
+      let result = await downloadFile(gitHubFile.url, file);
+      return { "success": result, "name": gitHubFile.name}
+    })).then(function(results) {
+      results.forEach(result => {
+        var castResult = (result as any);
+        if(castResult.success) {
+          window.showInformationMessage(`${castResult.name} File downloaded correctly.`);
+        } else {
+          window.showErrorMessage(`Error downloading ${castResult.name} File.`);
+        }
+      });
+    });
   }
 }
