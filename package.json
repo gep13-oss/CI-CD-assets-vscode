@@ -23,7 +23,16 @@
 		"theme": "light"
 	},
 	"activationEvents": [
-		"onCommand:chocolatey.new",
+		"onCommand:cicd.editorconfig",
+		"onCommand:cicd.appveyor",
+		"onCommand:cicd.gitattributes",
+		"onCommand:cicd.gitignore",
+		"onCommand:cicd.mergify",
+		"onCommand:cicd.travis",
+		"onCommand:cicd.gitreleasemanager",
+		"onCommand:cicd.wyam",
+		"onCommand:cicd.github",
+		"onCommand:cicd.all"
 	],
 	"engines": {
 		"vscode": "^1.24.0"
@@ -34,12 +43,136 @@
 	"contributes": {
 		"configuration": [
 			{
+				"type": "object",
+				"title": "CI/CD Assets Configuration",
+				"properties": {
+					"cicd.urls": {
+						"type": "object",
+						"default": {
+							"editorconfig": "https://raw.githubusercontent.com/gep13/CI-CD-assets/master/.editorconfig",
+							"appveyor": "https://raw.githubusercontent.com/gep13/CI-CD-assets/master/.appveyor.yml",
+							"gitattributes": "https://raw.githubusercontent.com/gep13/CI-CD-assets/master/.gitattributes",
+							"gitignore": "https://raw.githubusercontent.com/gep13/CI-CD-assets/master/.gitignore",
+							"mergify": "https://raw.githubusercontent.com/gep13/CI-CD-assets/master/.mergify.yml",
+							"travis": "https://raw.githubusercontent.com/gep13/CI-CD-assets/master/.travis.yml",
+							"gitreleasemanager": "https://raw.githubusercontent.com/gep13/CI-CD-assets/master/GitReleaseManager.yaml",
+							"wyam": "https://raw.githubusercontent.com/gep13/CI-CD-assets/master/config.wyam",
+							"github": [
+								{
+									"name": "CODEOFCONDUCT.md",
+									"url": "https://raw.githubusercontent.com/gep13/CI-CD-assets/master/.github/CODEOFCONDUCT.md"
+								},
+								{
+									"name": "CONTRIBUTING.md",
+									"url": "https://raw.githubusercontent.com/gep13/CI-CD-assets/master/.github/CONTRIBUTING.md"
+								},
+								{
+									"name": "ISSUE_TEMPLATE.md",
+									"url": "https://raw.githubusercontent.com/gep13/CI-CD-assets/master/.github/ISSUE_TEMPLATE.md"
+								},
+								{
+									"name": "PULL_REQUEST_TEMPLATE.md",
+									"url": "https://raw.githubusercontent.com/gep13/CI-CD-assets/master/.github/PULL_REQUEST_TEMPLATE.md"
+								}
+							]
+						},
+						"description": "The URL's to download files from.",
+						"properties": {
+							"editorconfig": {
+								"type": "string",
+								"description": "The URL to download the EditorConfig file from.",
+								"default": "https://raw.githubusercontent.com/gep13/CI-CD-assets/master/.editorconfig"
+							},
+							"appveyor": {
+								"type": "string",
+								"description": "The URL to download the AppVeyor file from.",
+								"default": "https://raw.githubusercontent.com/gep13/CI-CD-assets/master/.appveyor.yml"
+							},
+							"gitattributes": {
+								"type": "string",
+								"description": "The URL to download the .gitattributes file from.",
+								"default": "https://raw.githubusercontent.com/gep13/CI-CD-assets/master/.gitattributes"
+							},
+							"gitignore": {
+								"type": "string",
+								"description": "The URL to download the .gitignore file from.",
+								"default": "https://raw.githubusercontent.com/gep13/CI-CD-assets/master/.gitignore"
+							},
+							"mergify": {
+								"type": "string",
+								"description": "The URL to download the .mergify.yml file from",
+								"default": "https://raw.githubusercontent.com/gep13/CI-CD-assets/master/.mergify.yml"
+							},
+							"travis": {
+								"type": "string",
+								"description": "The URL to download the .travis.yml file from",
+								"default": "https://raw.githubusercontent.com/gep13/CI-CD-assets/master/.travis.yml"
+							},
+							"gitreleasemanager": {
+								"type": "string",
+								"description": "The URL to download the GitReleaseManager.yaml file from",
+								"default": "https://raw.githubusercontent.com/gep13/CI-CD-assets/master/GitReleaseManager.yaml"
+							},
+							"wyam": {
+								"type": "string",
+								"description": "The URL to download the config.wyam file from",
+								"default": "https://raw.githubusercontent.com/gep13/CI-CD-assets/master/config.wyam"
+							},
+							"github": {
+								"type": "array",
+								"description": "Array of URL's to be placed in .github folder",
+								"default": [
+									"https://raw.githubusercontent.com/gep13/CI-CD-assets/master/.github/CODEOFCONDUCT.md",
+									"https://raw.githubusercontent.com/gep13/CI-CD-assets/master/.github/CONTRIBUTING.md",
+									"https://raw.githubusercontent.com/gep13/CI-CD-assets/master/.github/ISSUE_TEMPLATE.md",
+									"https://raw.githubusercontent.com/gep13/CI-CD-assets/master/.github/PULL_REQUEST_TEMPLATE.md"
+								]
+							}
+						}
+					}
+				}
 			}
 		],
 		"commands": [
 			{
-				"command": "chocolatey.new",
-				"title": "Chocolatey: Create new Chocolatey package"
+				"command": "cicd.editorconfig",
+				"title": "CICD: Download .editorconfig file"
+			},
+			{
+				"command": "cicd.appveyor",
+				"title": "CICD: Download .appveyor.yml file"
+			},
+			{
+				"command": "cicd.gitattributes",
+				"title": "CICD: Download .gitattributes file"
+			},
+			{
+				"command": "cicd.gitignore",
+				"title": "CICD: Download .gitignore file"
+			},
+			{
+				"command": "cicd.mergify",
+				"title": "CICD: Download .mergify.yml file"
+			},
+			{
+				"command": "cicd.travis",
+				"title": "CICD: Download .travis.yml file"
+			},
+			{
+				"command": "cicd.gitreleasemanager",
+				"title": "CICD: Download GitReleaseManager.yaml file"
+			},
+			{
+				"command": "cicd.wyam",
+				"title": "CICD: Download config.wyam file"
+			},
+			{
+				"command": "cicd.github",
+				"title": "CICD: Download .github files"
+			},
+			{
+				"command": "cicd.all",
+				"title": "CICD: Download all files."
 			}
 		]
 	},
@@ -64,5 +197,8 @@
 		"typemoq": "^2.1.0",
 		"typescript": "^2.6.1",
 		"vscode": "^1.1.6"
+	},
+	"dependencies": {
+		"request": "^2.87.0"
 	}
 }
