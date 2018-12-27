@@ -28,7 +28,8 @@
 		"onCommand:cicd.gitattributes",
 		"onCommand:cicd.gitignore",
 		"onCommand:cicd.mergify",
-		"onCommand:cicd.travis"
+		"onCommand:cicd.travis",
+		"onCommand:cicd.gitreleasemanager"
 	],
 	"engines": {
 		"vscode": "^1.24.0"
@@ -50,7 +51,8 @@
 							"gitattributes": "https://raw.githubusercontent.com/gep13/CI-CD-assets/master/.gitattributes",
 							"gitignore": "https://raw.githubusercontent.com/gep13/CI-CD-assets/master/.gitignore",
 							"mergify": "https://raw.githubusercontent.com/gep13/CI-CD-assets/master/.mergify.yml",
-							"travis": "https://raw.githubusercontent.com/gep13/CI-CD-assets/master/.travis.yml"
+							"travis": "https://raw.githubusercontent.com/gep13/CI-CD-assets/master/.travis.yml",
+							"gitreleasemanager": "https://raw.githubusercontent.com/gep13/CI-CD-assets/master/GitReleaseManager.yaml"
 						},
 						"description": "The URL's to download files from.",
 						"properties": {
@@ -83,6 +85,11 @@
 								"type": "string",
 								"description": "The URL to download the .travis.yml file from",
 								"default": "https://raw.githubusercontent.com/gep13/CI-CD-assets/master/.travis.yml"
+							},
+							"gitreleasemanager": {
+								"type": "string",
+								"description": "The URL to download the GitReleaseManager.yaml file from",
+								"default": "https://raw.githubusercontent.com/gep13/CI-CD-assets/master/GitReleaseManager.yaml"
 							}
 						}
 					}
@@ -113,6 +120,10 @@
 			{
 				"command": "cicd.travis",
 				"title": "CICD: Download .travis.yml File"
+			},
+			{
+				"command": "cicd.gitreleasemanager",
+				"title": "CICD: Download GitReleaseManager.yaml File"
 			}
 		]
 	},

@@ -11,6 +11,7 @@ export function activate(): void {
     commands.registerCommand("cicd.gitignore", async () => downloadGitIgnoreFile());
     commands.registerCommand("cicd.mergify", async () => downloadMergifyFile());
     commands.registerCommand("cicd.travis", async () => downloadTravisFile());
+    commands.registerCommand("cicd.gitreleasemanager", async () => downloadGitReleaseManagerFile());
 }
 
 async function checkForExisting(path: string): Promise<boolean> {
@@ -224,6 +225,35 @@ async function downloadTravisFile(): Promise<void> {
       window.showInformationMessage(".travis.yml File downloaded correctly.");
     } else {
       window.showErrorMessage("Error downloading .travis.yml File.");
+    }
+  }
+}
+
+async function downloadGitReleaseManagerFile(): Promise<void> {
+  var workspaceRootPath = checkForWorkspace();
+  if(workspaceRootPath !== "") {
+    var gitReleaseManagerFilePath = path.join(workspaceRootPath, 'GitReleaseManager.yaml');
+    var ready = await checkForExisting(gitReleaseManagerFilePath);
+
+    if(!ready) {
+      return;
+    }
+
+    var file = fs.createWriteStream(gitReleaseManagerFilePath);
+    var config = workspace.getConfiguration('cicd');
+
+    if (!config) {
+      window.showErrorMessage("Could not find CI/CD Configuration.");
+      return;
+    }
+
+    var uri = config.urls.gitreleasemanager;
+    var result = await downloadFile(uri, file);
+
+    if(result) {
+      window.showInformationMessage("GitReleaseManager.yaml File downloaded correctly.");
+    } else {
+      window.showErrorMessage("Error downloading GitReleaseManager.yaml File.");
     }
   }
 }
