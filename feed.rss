@@ -1,11 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <rss version="2.0">
 	<channel>
-		<title>Choco VS Code</title>
-		<link>http://gep13.github.io/ci-cd-assets-vscode</link>
+		<title>CI/CD Assets VS Code</title>
+		<link>http://gep13.github.io/CI-CD-assets-vscode</link>
 		<description />
 		<copyright>2018</copyright>
-		<pubDate>Fri, 28 Dec 2018 19:58:09 GMT</pubDate>
-		<lastBuildDate>Fri, 28 Dec 2018 19:58:09 GMT</lastBuildDate>
+		<pubDate>Fri, 28 Dec 2018 20:08:27 GMT</pubDate>
+		<lastBuildDate>Fri, 28 Dec 2018 20:08:27 GMT</lastBuildDate>
 	</channel>
 </rss>
