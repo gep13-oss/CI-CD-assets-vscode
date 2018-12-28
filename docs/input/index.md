@@ -1,1 +1,1 @@
-# CI/CD Assets Visual Studio Code Extension Documentation
+# CI/CD Assets VS Code Extension Documentation
