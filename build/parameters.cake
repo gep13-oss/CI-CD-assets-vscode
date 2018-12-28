@@ -47,7 +47,7 @@ public class BuildParameters
                     { "Host",  WebHost },
                     { "LinkRoot",  WebLinkRoot },
                     { "BaseEditUrl", WebBaseEditUrl },
-                    { "Title", "Choco VS Code" },
+                    { "Title", "CI/CD Assets VS Code" },
                     { "IncludeGlobalNamespace", false }
                 };
 
