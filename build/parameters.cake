@@ -193,7 +193,7 @@ public class BuildParameters
             ),
             SkipGitVersion = StringComparer.OrdinalIgnoreCase.Equals("True", context.EnvironmentVariable("CICDASSETSVSCODE_SKIP_GITVERSION")),
             ChocolateyPackages = context.MakeAbsolute(context.Directory("BuildArtifacts/_Packages/chocolatey")),
-            WyamRootDirectoryPath = context.MakeAbsolute(context.Directory("docs"),
+            WyamRootDirectoryPath = context.MakeAbsolute(context.Directory("docs")),
             WyamPublishDirectoryPath = context.MakeAbsolute(context.Directory("BuildArtifacts/_PublishedDocumentation")),
             WyamConfigurationFile = context.MakeAbsolute((FilePath)"config.wyam"),
             WyamRecipe = "Docs",
