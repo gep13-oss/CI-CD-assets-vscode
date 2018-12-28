@@ -199,7 +199,7 @@ public class BuildParameters
             WyamRecipe = "Docs",
             WyamTheme = "Samson",
             WebHost = "gep13.github.io",
-            WebLinkRoot = "ci-cd-assets-vscode",
+            WebLinkRoot = "CI-CD-assets-vscode",
             WebBaseEditUrl = "https://github.com/gep13/CI-CD-assets-vscode/tree/develop/input/"
         };
     }
