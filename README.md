@@ -47,7 +47,7 @@ choco install ci-cd-assets-vscode
 
 ## Documentation
 
-You can find the documentation that is available for this project [here](https://gep13.github.io/ci-cd-assets-vscode/).
+You can find the documentation that is available for this project [here](https://gep13.github.io/CI-CD-assets-vscode/).
 
 ## Contributing
 
