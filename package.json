@@ -199,6 +199,7 @@
 		"vscode": "^1.1.6"
 	},
 	"dependencies": {
+		"replace-in-file": "^3.4.2",
 		"request": "^2.87.0"
 	}
 }

@@ -2,6 +2,7 @@ import {commands, window, workspace} from "vscode";
 import * as request from "request";
 import * as path from "path"
 import * as fs from "fs";
+const replace = require('replace-in-file');
 
 export function activate(): void {
     // register Commands
@@ -293,6 +294,11 @@ async function downloadWyamFile(): Promise<void> {
 async function downloadGitHubFiles(): Promise<void> {
   var workspaceRootPath = checkForWorkspace();
   if(workspaceRootPath !== "") {
+    let projectName = await window.showInputBox({
+      placeHolder: "Enter the project name...",
+      value: ""
+    });
+
     var gitHubFolderPath = path.join(workspaceRootPath, ".github");
     if(!fs.existsSync(gitHubFolderPath)) {
       fs.mkdirSync(gitHubFolderPath);
@@ -308,7 +314,7 @@ async function downloadGitHubFiles(): Promise<void> {
     const gitHubFiles = config.urls.github;
 
     Promise.all(gitHubFiles.map(async gitHubFile => {
-      var gitHubFilePath = path.join(workspaceRootPath, ".github", gitHubFile.name);
+      var gitHubFilePath = path.join(gitHubFolderPath, gitHubFile.name);
       var ready = await checkForExisting(gitHubFilePath);
 
       if(!ready) {
@@ -326,6 +332,14 @@ async function downloadGitHubFiles(): Promise<void> {
         } else {
           window.showErrorMessage(`Error downloading ${castResult.name} File.`);
         }
+
+        const options = {
+          files: gitHubFolderPath + "/*.md",
+          from: /<projectName>/g,
+          to: projectName,
+        };
+
+        replace(options);
       });
     });
   }
