@@ -35,7 +35,7 @@ The CI/CD Assets Visual Studio Code provides the following commands:
 
 ## Resources
 
-Short YouTube videos of each of the releases of this extension can be found in this [playlist]().
+Short YouTube videos of each of the releases of this extension can be found in this [playlist](https://www.youtube.com/playlist?list=PL84yg23i9GBjZXVmLgZfNcc9Nhz4aGdto).
 
 ## Installation
 
@@ -47,13 +47,13 @@ choco install ci-cd-assets-vscode
 
 ## Documentation
 
-You can find the documentation that is available for this project [here](https://gep13.github.io/ci-cd-assets-vscode/).
+You can find the documentation that is available for this project [here](https://gep13.github.io/CI-CD-assets-vscode/).
 
 ## Contributing
 
 If you would like to see any features added for this VS Code Extension, feel free to raise an [issue](https://github.com/gep13/CI-CD-assets-vscode/issues), and if possible, a follow up pull request.
 
-You can also join in the Gitter Chat [![Join the chat at https://gitter.im/ci-cd-assets/community](https://badges.gitter.im/ci-cd-assets/community.svg)](https://gitter.im/ci-cd-assets/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+You can also join in the Gitter Chat [![Join the chat at https://gitter.im/gep13-oss/community](https://badges.gitter.im/gep13-oss/community.svg)](https://gitter.im/gep13-oss/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 ## Releases
 

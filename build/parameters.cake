@@ -47,7 +47,7 @@ public class BuildParameters
                     { "Host",  WebHost },
                     { "LinkRoot",  WebLinkRoot },
                     { "BaseEditUrl", WebBaseEditUrl },
-                    { "Title", "Choco VS Code" },
+                    { "Title", "CI/CD Assets VS Code" },
                     { "IncludeGlobalNamespace", false }
                 };
 
@@ -107,7 +107,7 @@ public class BuildParameters
     {
         get
         {
-            return "Version " + Version.SemVersion + " of the CI/CD Assets VSCode Extension has just been released, https://marketplace.visualstudio.com/items?itemName=gep13.ci-cd-assets-vscode. @chocolateynuget @code  Full release notes: https://github.com/gep13/CI-CD-assets-vscode/releases/tag/" + Version.SemVersion;
+            return "Version " + Version.SemVersion + " of the CI/CD Assets VSCode Extension has just been released, https://marketplace.visualstudio.com/items?itemName=gep13.ci-cd-assets-vscode. @code  Full release notes: https://github.com/gep13/CI-CD-assets-vscode/releases/tag/" + Version.SemVersion;
         }
     }
 
@@ -193,13 +193,13 @@ public class BuildParameters
             ),
             SkipGitVersion = StringComparer.OrdinalIgnoreCase.Equals("True", context.EnvironmentVariable("CICDASSETSVSCODE_SKIP_GITVERSION")),
             ChocolateyPackages = context.MakeAbsolute(context.Directory("BuildArtifacts/_Packages/chocolatey")),
-            WyamRootDirectoryPath = context.MakeAbsolute(context.Environment.WorkingDirectory),
+            WyamRootDirectoryPath = context.MakeAbsolute(context.Directory("docs")),
             WyamPublishDirectoryPath = context.MakeAbsolute(context.Directory("BuildArtifacts/_PublishedDocumentation")),
             WyamConfigurationFile = context.MakeAbsolute((FilePath)"config.wyam"),
             WyamRecipe = "Docs",
             WyamTheme = "Samson",
             WebHost = "gep13.github.io",
-            WebLinkRoot = "ci-cd-assets-vscode",
+            WebLinkRoot = "CI-CD-assets-vscode",
             WebBaseEditUrl = "https://github.com/gep13/CI-CD-assets-vscode/tree/develop/input/"
         };
     }
