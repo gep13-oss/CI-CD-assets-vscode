@@ -32,7 +32,8 @@
 		"onCommand:cicd.gitreleasemanager",
 		"onCommand:cicd.wyam",
 		"onCommand:cicd.github",
-		"onCommand:cicd.all"
+		"onCommand:cicd.all",
+		"onCommand:cicd.dependabot"
 	],
 	"engines": {
 		"vscode": "^1.24.0"
@@ -57,6 +58,7 @@
 							"travis": "https://raw.githubusercontent.com/gep13/CI-CD-assets/master/.travis.yml",
 							"gitreleasemanager": "https://raw.githubusercontent.com/gep13/CI-CD-assets/master/GitReleaseManager.yaml",
 							"wyam": "https://raw.githubusercontent.com/gep13/CI-CD-assets/master/config.wyam",
+							"dependabot": "https://raw.githubusercontent.com/gep13/CI-CD-assets/master/.dependabot/config.yml",
 							"github": [
 								{
 									"name": "CODEOFCONDUCT.md",
@@ -118,6 +120,11 @@
 								"description": "The URL to download the config.wyam file from",
 								"default": "https://raw.githubusercontent.com/gep13/CI-CD-assets/master/config.wyam"
 							},
+							"dependabot": {
+								"type": "string",
+								"description": "The URL to download the dependabot config file from",
+								"default": "https://raw.githubusercontent.com/gep13/CI-CD-assets/master/.dependabot/config.yml"
+							},
 							"github": {
 								"type": "array",
 								"description": "Array of URL's to be placed in .github folder",
@@ -173,6 +180,10 @@
 			{
 				"command": "cicd.all",
 				"title": "CICD: Download all files."
+			},
+			{
+				"command": "cicd.dependabot",
+				"title": "CICD: Download .dependabot config file"
 			}
 		]
 	},
