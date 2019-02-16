@@ -16,6 +16,7 @@ export function activate(): void {
     commands.registerCommand("cicd.wyam", async () => downloadWyamFile());
     commands.registerCommand("cicd.github", async () => downloadGitHubFiles());
     commands.registerCommand("cicd.all", async () => downloadAllFiles());
+    commands.registerCommand("cicd.dependabot", async () => downloadDependabotFile());
 }
 
 async function checkForExisting(path: string): Promise<boolean> {
@@ -354,5 +355,40 @@ async function downloadAllFiles(): Promise<void> {
     .then(downloadGitReleaseManagerFile)
     .then(downloadMergifyFile)
     .then(downloadTravisFile)
-    .then(downloadWyamFile);
+    .then(downloadWyamFile)
+    .then(downloadDependabotFile);
+}
+
+async function downloadDependabotFile(): Promise<void> {
+  var workspaceRootPath = checkForWorkspace();
+  if(workspaceRootPath !== "") {
+    var dependabotFolderPath = path.join(workspaceRootPath, ".dependabot");
+    if(!fs.existsSync(dependabotFolderPath)) {
+      fs.mkdirSync(dependabotFolderPath);
+    }
+
+    var dependabotFilePath = path.join(dependabotFolderPath, "config.yml");
+    var ready = await checkForExisting(dependabotFilePath);
+
+    if(!ready) {
+      return;
+    }
+
+    var file = fs.createWriteStream(dependabotFilePath);
+    var config = workspace.getConfiguration('cicd');
+
+    if (!config) {
+      window.showErrorMessage("Could not find CI/CD Configuration.");
+      return;
+    }
+
+    var uri = config.urls.dependabot;
+    var result = await downloadFile(uri, file);
+
+    if(result) {
+      window.showInformationMessage(".dependabot/config.yml File downloaded correctly.");
+    } else {
+      window.showErrorMessage("Error downloading .dependabot/config.yml File.");
+    }
+  }
 }
