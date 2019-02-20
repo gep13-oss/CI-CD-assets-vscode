@@ -68,15 +68,15 @@ export class GitHubCommand implements ICommand {
               `Error downloading ${castResult.name} File.`
             );
           }
-
-          const options = {
-            files: gitHubFolderPath + "/*.md",
-            from: /<projectName>/g,
-            to: projectName
-          };
-
-          replace(options);
         });
+
+        const options = {
+          files: gitHubFolderPath + "/*.md",
+          from: /<projectName>/g,
+          to: projectName
+        };
+
+        replace(options);
       });
     }
   }

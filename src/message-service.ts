@@ -16,7 +16,7 @@ export class MessageService {
   }
 
   async showInput(placeHolder: string, value: string): Promise<any> {
-    await vscode.window.showInputBox({
+    return await vscode.window.showInputBox({
       placeHolder: placeHolder,
       value: value
     });
