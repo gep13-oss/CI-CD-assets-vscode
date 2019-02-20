@@ -9,32 +9,7 @@ export function activate(context: vscode.ExtensionContext) {
 }
 
 // async function downloadMergifyFile(): Promise<void> {
-//   var workspaceRootPath = checkForWorkspace();
-//   if(workspaceRootPath !== "") {
-//     var mergifyFilePath = path.join(workspaceRootPath, '.mergify.yml');
-//     var ready = await checkForExisting(mergifyFilePath);
-
-//     if(!ready) {
-//       return;
-//     }
-
-//     var file = fs.createWriteStream(mergifyFilePath);
-//     var config = workspace.getConfiguration('cicd');
-
-//     if (!config) {
-//       window.showErrorMessage("Could not find CI/CD Configuration.");
-//       return;
-//     }
-
-//     var uri = config.urls.mergify;
-//     var result = await downloadFile(uri, file);
-
-//     if(result) {
-//       window.showInformationMessage(".mergify.yml File downloaded correctly.");
-//     } else {
-//       window.showErrorMessage("Error downloading .mergify.yml File.");
-//     }
-//   }
+//
 // }
 
 // async function downloadTravisFile(): Promise<void> {
