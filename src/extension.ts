@@ -8,35 +8,6 @@ export function activate(context: vscode.ExtensionContext) {
   cmdManager.registerCommands(context);
 }
 
-// async function downloadGitAttributesFile(): Promise<void> {
-//   var workspaceRootPath = checkForWorkspace();
-//   if(workspaceRootPath !== "") {
-//     var gitAttributesFilePath = path.join(workspaceRootPath, '.gitattributes');
-//     var ready = await checkForExisting(gitAttributesFilePath);
-
-//     if(!ready) {
-//       return;
-//     }
-
-//     var file = fs.createWriteStream(gitAttributesFilePath);
-//     var config = workspace.getConfiguration('cicd');
-
-//     if (!config) {
-//       window.showErrorMessage("Could not find CI/CD Configuration.");
-//       return;
-//     }
-
-//     var uri = config.urls.gitattributes;
-//     var result = await downloadFile(uri, file);
-
-//     if(result) {
-//       window.showInformationMessage(".gitattributes File downloaded correctly.");
-//     } else {
-//       window.showErrorMessage("Error downloading .gitattributes File.");
-//     }
-//   }
-// }
-
 // async function downloadGitIgnoreFile(): Promise<void> {
 //   var workspaceRootPath = checkForWorkspace();
 //   if(workspaceRootPath !== "") {
