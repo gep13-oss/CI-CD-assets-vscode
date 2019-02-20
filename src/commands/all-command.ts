@@ -1,18 +1,19 @@
-import { injectable, inject } from "inversify";
+import { injectable, multiInject } from "inversify";
+import TYPES from "../types";
 import { ICommand } from "./icommand";
-import { MessageService } from '../message-service';
-import TYPES from '../types';
+import { IAllCommand } from "./iallcommand";
 
- @injectable()
-export class AllCommand implements ICommand {
+@injectable()
+export class AllCommand implements IAllCommand {
+  constructor(@multiInject(TYPES.Command) private commands: ICommand[]) {}
 
-   constructor(
-    @inject(TYPES.MessageService) private messageService: MessageService
-  ) {}
+  get id() {
+    return "cicd.all";
+  }
 
-   get id() { return "cicd.all"; }
-
-   execute() {
-    this.messageService.showInformation('cicd.all');
+  async execute() {
+    for (const c of this.commands) {
+      await c.execute();
+    }
   }
 }

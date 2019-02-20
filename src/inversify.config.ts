@@ -3,6 +3,7 @@ import 'reflect-metadata';
 import { Container } from 'inversify';
 import TYPES from './types';
 import { ICommand } from './commands/icommand';
+import { IAllCommand } from './commands/iallcommand';
 import { CommandManager } from './commands/command-manager';
 import { AllCommand } from './commands/all-command';
 import { AppVeyorCommand } from './commands/appveyor-command';
@@ -25,7 +26,6 @@ container.bind(TYPES.MessageService).to(MessageService).inSingletonScope();
 container.bind(TYPES.FileSystemService).to(FileSystemService).inSingletonScope();
 container.bind(TYPES.NetworkService).to(NetworkService).inSingletonScope();
 container.bind(TYPES.ConfigurationService).to(ConfigurationService).inSingletonScope();
-container.bind<ICommand>(TYPES.Command).to(AllCommand);
 container.bind<ICommand>(TYPES.Command).to(AppVeyorCommand);
 container.bind<ICommand>(TYPES.Command).to(DependabotCommand);
 container.bind<ICommand>(TYPES.Command).to(EditorConfigCommand);
@@ -36,6 +36,7 @@ container.bind<ICommand>(TYPES.Command).to(GitReleaseManagerCommand);
 container.bind<ICommand>(TYPES.Command).to(MergifyCommand);
 container.bind<ICommand>(TYPES.Command).to(TravisCommand);
 container.bind<ICommand>(TYPES.Command).to(WyamCommand);
+container.bind<IAllCommand>(TYPES.AllCommand).to(AllCommand);
 
 container.bind<CommandManager>(TYPES.CommandManager).to(CommandManager);
 
