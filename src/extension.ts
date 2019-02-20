@@ -8,35 +8,6 @@ export function activate(context: vscode.ExtensionContext) {
   cmdManager.registerCommands(context);
 }
 
-// async function downloadWyamFile(): Promise<void> {
-//   var workspaceRootPath = checkForWorkspace();
-//   if(workspaceRootPath !== "") {
-//     var wyamFilePath = path.join(workspaceRootPath, 'config.wyam');
-//     var ready = await checkForExisting(wyamFilePath);
-
-//     if(!ready) {
-//       return;
-//     }
-
-//     var file = fs.createWriteStream(wyamFilePath);
-//     var config = workspace.getConfiguration('cicd');
-
-//     if (!config) {
-//       window.showErrorMessage("Could not find CI/CD Configuration.");
-//       return;
-//     }
-
-//     var uri = config.urls.wyam;
-//     var result = await downloadFile(uri, file);
-
-//     if(result) {
-//       window.showInformationMessage("config.wyam File downloaded correctly.");
-//     } else {
-//       window.showErrorMessage("Error downloading config.wyam File.");
-//     }
-//   }
-// }
-
 // async function downloadGitHubFiles(): Promise<void> {
 //   var workspaceRootPath = checkForWorkspace();
 //   if(workspaceRootPath !== "") {
