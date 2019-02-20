@@ -2,7 +2,7 @@ import * as vscode from 'vscode';
 import { multiInject, injectable, inject } from 'inversify';
 import TYPES from '../types';
 import { ICommand } from './icommand';
-import { AllCommand } from './all-command';
+import { IAllCommand } from './iallcommand';
 
  @injectable()
 export class CommandManager {
