@@ -8,35 +8,6 @@ export function activate(context: vscode.ExtensionContext) {
   cmdManager.registerCommands(context);
 }
 
-// async function downloadGitIgnoreFile(): Promise<void> {
-//   var workspaceRootPath = checkForWorkspace();
-//   if(workspaceRootPath !== "") {
-//     var gitIgnoreFilePath = path.join(workspaceRootPath, '.gitignore');
-//     var ready = await checkForExisting(gitIgnoreFilePath);
-
-//     if(!ready) {
-//       return;
-//     }
-
-//     var file = fs.createWriteStream(gitIgnoreFilePath);
-//     var config = workspace.getConfiguration('cicd');
-
-//     if (!config) {
-//       window.showErrorMessage("Could not find CI/CD Configuration.");
-//       return;
-//     }
-
-//     var uri = config.urls.gitignore;
-//     var result = await downloadFile(uri, file);
-
-//     if(result) {
-//       window.showInformationMessage(".gitignore File downloaded correctly.");
-//     } else {
-//       window.showErrorMessage("Error downloading .gitignore File.");
-//     }
-//   }
-// }
-
 // async function downloadMergifyFile(): Promise<void> {
 //   var workspaceRootPath = checkForWorkspace();
 //   if(workspaceRootPath !== "") {
