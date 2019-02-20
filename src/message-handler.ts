@@ -14,4 +14,11 @@ export class MessageHandler {
   showError(message: string): void {
     vscode.window.showErrorMessage(message);
   }
+
+  async showInput(placeHolder: string, value: string): Promise<any> {
+    await vscode.window.showInputBox({
+      placeHolder: placeHolder,
+      value: value
+    });)
+  }
 }
