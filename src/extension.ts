@@ -8,64 +8,6 @@ export function activate(context: vscode.ExtensionContext) {
   cmdManager.registerCommands(context);
 }
 
-// async function downloadEditorConfigFile(): Promise<void> {
-//   var workspaceRootPath = checkForWorkspace();
-//   if(workspaceRootPath !== "") {
-//     var editorConfigFilePath = path.join(workspaceRootPath, '.editorconfig');
-//     var ready = await checkForExisting(editorConfigFilePath);
-
-//     if(!ready) {
-//       return;
-//     }
-
-//     var file = fs.createWriteStream(editorConfigFilePath);
-//     var config = workspace.getConfiguration('cicd');
-
-//     if (!config) {
-//       window.showErrorMessage("Could not find CI/CD Configuration.");
-//       return;
-//     }
-
-//     var uri = config.urls.editorconfig;
-//     var result = await downloadFile(uri, file);
-
-//     if(result) {
-//      window.showInformationMessage("EditorConfig File downloaded correctly.");
-//     } else {
-//       window.showErrorMessage("Error downloading EditorConfig File.");
-//     }
-//   }
-// }
-
-// async function downloadAppVeyorConfigFile(): Promise<void> {
-//   var workspaceRootPath = checkForWorkspace();
-//   if(workspaceRootPath !== "") {
-//     var appveyorFilePath = path.join(workspaceRootPath, '.appveyor.yml');
-//     var ready = await checkForExisting(appveyorFilePath);
-
-//     if(!ready) {
-//       return;
-//     }
-
-//     var file = fs.createWriteStream(appveyorFilePath);
-//     var config = workspace.getConfiguration('cicd');
-
-//     if (!config) {
-//       window.showErrorMessage("Could not find CI/CD Configuration.");
-//       return;
-//     }
-
-//     var uri = config.urls.appveyor;
-//     var result = await downloadFile(uri, file);
-
-//     if(result) {
-//       window.showInformationMessage("AppVeyor File downloaded correctly.");
-//     } else {
-//       window.showErrorMessage("Error downloading AppVeyor File.");
-//     }
-//   }
-// }
-
 // async function downloadGitAttributesFile(): Promise<void> {
 //   var workspaceRootPath = checkForWorkspace();
 //   if(workspaceRootPath !== "") {
