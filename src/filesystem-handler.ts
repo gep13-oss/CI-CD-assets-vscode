@@ -37,4 +37,12 @@ export class FileSystemHandler {
   createWriteStream(path: string) {
     return fs.createWriteStream(path);
   }
+
+  directoryExists(path: string) {
+    return fs.existsSync(path)
+  }
+
+  directoryCreate(path: string) {
+    fs.mkdirSync(path);
+  }
 }

@@ -74,37 +74,3 @@ export function activate(context: vscode.ExtensionContext) {
 //     .then(downloadWyamFile)
 //     .then(downloadDependabotFile);
 // }
-
-// async function downloadDependabotFile(): Promise<void> {
-//   var workspaceRootPath = checkForWorkspace();
-//   if(workspaceRootPath !== "") {
-//     var dependabotFolderPath = path.join(workspaceRootPath, ".dependabot");
-//     if(!fs.existsSync(dependabotFolderPath)) {
-//       fs.mkdirSync(dependabotFolderPath);
-//     }
-
-//     var dependabotFilePath = path.join(dependabotFolderPath, "config.yml");
-//     var ready = await checkForExisting(dependabotFilePath);
-
-//     if(!ready) {
-//       return;
-//     }
-
-//     var file = fs.createWriteStream(dependabotFilePath);
-//     var config = workspace.getConfiguration('cicd');
-
-//     if (!config) {
-//       window.showErrorMessage("Could not find CI/CD Configuration.");
-//       return;
-//     }
-
-//     var uri = config.urls.dependabot;
-//     var result = await downloadFile(uri, file);
-
-//     if(result) {
-//       window.showInformationMessage(".dependabot/config.yml File downloaded correctly.");
-//     } else {
-//       window.showErrorMessage("Error downloading .dependabot/config.yml File.");
-//     }
-//   }
-// }
