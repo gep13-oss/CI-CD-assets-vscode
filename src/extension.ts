@@ -8,37 +8,8 @@ export function activate(context: vscode.ExtensionContext) {
   cmdManager.registerCommands(context);
 }
 
-// async function downloadMergifyFile(): Promise<void> {
-//
-// }
-
 // async function downloadTravisFile(): Promise<void> {
-//   var workspaceRootPath = checkForWorkspace();
-//   if(workspaceRootPath !== "") {
-//     var travisFilePath = path.join(workspaceRootPath, '.travis.yml');
-//     var ready = await checkForExisting(travisFilePath);
-
-//     if(!ready) {
-//       return;
-//     }
-
-//     var file = fs.createWriteStream(travisFilePath);
-//     var config = workspace.getConfiguration('cicd');
-
-//     if (!config) {
-//       window.showErrorMessage("Could not find CI/CD Configuration.");
-//       return;
-//     }
-
-//     var uri = config.urls.travis;
-//     var result = await downloadFile(uri, file);
-
-//     if(result) {
-//       window.showInformationMessage(".travis.yml File downloaded correctly.");
-//     } else {
-//       window.showErrorMessage("Error downloading .travis.yml File.");
-//     }
-//   }
+//
 // }
 
 // async function downloadGitReleaseManagerFile(): Promise<void> {
