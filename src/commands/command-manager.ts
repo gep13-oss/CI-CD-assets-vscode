@@ -8,7 +8,7 @@ import { AllCommand } from './all-command';
 export class CommandManager {
   constructor(
     @multiInject(TYPES.Command) private commands: ICommand[],
-    @inject(TYPES.AllCommand) private allCommand: AllCommand
+    @inject(TYPES.AllCommand) private allCommand: IAllCommand
   ) {}
 
    registerCommands(context: vscode.ExtensionContext) {
