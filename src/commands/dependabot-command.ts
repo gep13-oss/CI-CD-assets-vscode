@@ -1,20 +1,20 @@
 import { injectable, inject } from "inversify";
 import { ICommand } from "./icommand";
-import { MessageHandler } from "../message-handler";
-import { FileSystemHandler } from "../filesystem-handler";
-import { NetworkHandler } from "../network-handler";
-import { ConfigurationHandler } from "../configuration-handler";
+import { MessageService } from "../message-service";
+import { FileSystemService } from "../filesystem-service";
+import { NetworkService } from "../network-service";
+import { ConfigurationService } from "../configuration-service";
 import TYPES from "../types";
 
 @injectable()
 export class DependabotCommand implements ICommand {
   constructor(
-    @inject(TYPES.MessageHandler) private messageHandler: MessageHandler,
-    @inject(TYPES.FileSystemHandler)
-    private fileSystemHandler: FileSystemHandler,
-    @inject(TYPES.NetworkHandler) private networkHandler: NetworkHandler,
-    @inject(TYPES.ConfigurationHandler)
-    private configurationHandler: ConfigurationHandler
+    @inject(TYPES.MessageService) private messageService: MessageService,
+    @inject(TYPES.FileSystemService)
+    private fileSystemService: FileSystemService,
+    @inject(TYPES.NetworkService) private networkService: NetworkService,
+    @inject(TYPES.ConfigurationService)
+    private configurationService: ConfigurationService
   ) {}
 
   get id() {
@@ -22,37 +22,37 @@ export class DependabotCommand implements ICommand {
   }
 
   async execute() {
-    var workspaceRootPath = this.fileSystemHandler.checkForWorkspace();
+    var workspaceRootPath = this.fileSystemService.checkForWorkspace();
     if (workspaceRootPath !== "") {
-      var dependabotFolderPath = this.fileSystemHandler.combinePath(workspaceRootPath, ".dependabot");
-      if (!this.fileSystemHandler.directoryExists(dependabotFolderPath)) {
-        this.fileSystemHandler.directoryCreate(dependabotFolderPath);
+      var dependabotFolderPath = this.fileSystemService.combinePath(workspaceRootPath, ".dependabot");
+      if (!this.fileSystemService.directoryExists(dependabotFolderPath)) {
+        this.fileSystemService.directoryCreate(dependabotFolderPath);
       }
 
-      var dependabotFilePath = this.fileSystemHandler.combinePath(dependabotFolderPath, "config.yml");
-      var ready = await this.fileSystemHandler.checkForExisting(dependabotFilePath);
+      var dependabotFilePath = this.fileSystemService.combinePath(dependabotFolderPath, "config.yml");
+      var ready = await this.fileSystemService.checkForExisting(dependabotFilePath);
 
       if (!ready) {
         return;
       }
 
-      var file = this.fileSystemHandler.createWriteStream(dependabotFilePath);
-      var config = this.configurationHandler.getConfig("cicd");
+      var file = this.fileSystemService.createWriteStream(dependabotFilePath);
+      var config = this.configurationService.getConfig("cicd");
 
       if (!config) {
-        this.messageHandler.showError("Could not find CI/CD Configuration.");
+        this.messageService.showError("Could not find CI/CD Configuration.");
         return;
       }
 
       var uri = config.urls.dependabot;
-      var result = await this.networkHandler.downloadFile(uri, file);
+      var result = await this.networkService.downloadFile(uri, file);
 
       if (result) {
-        this.messageHandler.showInformation(
+        this.messageService.showInformation(
           ".dependabot/config.yml File downloaded correctly."
         );
       } else {
-        this.messageHandler.showError(
+        this.messageService.showError(
           "Error downloading .dependabot/config.yml File."
         );
       }

@@ -2,7 +2,7 @@ import { injectable } from "inversify";
 import * as request from "request";
 
 @injectable()
-export class NetworkHandler {
+export class NetworkService {
   downloadFile(
     uriToDownload: string,
     stream: NodeJS.WritableStream

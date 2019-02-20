@@ -1,20 +1,20 @@
 import { injectable, inject } from "inversify";
 import { ICommand } from "./icommand";
-import { MessageHandler } from "../message-handler";
-import { FileSystemHandler } from "../filesystem-handler";
-import { NetworkHandler } from "../network-handler";
-import { ConfigurationHandler } from "../configuration-handler";
+import { MessageService } from "../message-service";
+import { FileSystemService } from "../filesystem-service";
+import { NetworkService } from "../network-service";
+import { ConfigurationService } from "../configuration-service";
 import TYPES from "../types";
 
 @injectable()
 export class GitAttributesCommand implements ICommand {
   constructor(
-    @inject(TYPES.MessageHandler) private messageHandler: MessageHandler,
-    @inject(TYPES.FileSystemHandler)
-    private fileSystemHandler: FileSystemHandler,
-    @inject(TYPES.NetworkHandler) private networkHandler: NetworkHandler,
-    @inject(TYPES.ConfigurationHandler)
-    private configurationHandler: ConfigurationHandler
+    @inject(TYPES.MessageService) private messageService: MessageService,
+    @inject(TYPES.FileSystemService)
+    private fileSystemService: FileSystemService,
+    @inject(TYPES.NetworkService) private networkService: NetworkService,
+    @inject(TYPES.ConfigurationService)
+    private configurationService: ConfigurationService
   ) {}
 
   get id() {
@@ -22,35 +22,35 @@ export class GitAttributesCommand implements ICommand {
   }
 
   async execute() {
-    var workspaceRootPath = this.fileSystemHandler.checkForWorkspace();
+    var workspaceRootPath = this.fileSystemService.checkForWorkspace();
     if (workspaceRootPath !== "") {
-      var gitAttributesFilePath = this.fileSystemHandler.combinePath(
+      var gitAttributesFilePath = this.fileSystemService.combinePath(
         workspaceRootPath,
         ".gitattributes"
       );
-      var ready = await this.fileSystemHandler.checkForExisting(gitAttributesFilePath);
+      var ready = await this.fileSystemService.checkForExisting(gitAttributesFilePath);
 
       if (!ready) {
         return;
       }
 
-      var file = this.fileSystemHandler.createWriteStream(gitAttributesFilePath);
-      var config = this.configurationHandler.getConfig("cicd");
+      var file = this.fileSystemService.createWriteStream(gitAttributesFilePath);
+      var config = this.configurationService.getConfig("cicd");
 
       if (!config) {
-        this.messageHandler.showError("Could not find CI/CD Configuration.");
+        this.messageService.showError("Could not find CI/CD Configuration.");
         return;
       }
 
       var uri = config.urls.gitattributes;
-      var result = await this.networkHandler.downloadFile(uri, file);
+      var result = await this.networkService.downloadFile(uri, file);
 
       if (result) {
-        this.messageHandler.showInformation(
+        this.messageService.showInformation(
           ".gitattributes File downloaded correctly."
         );
       } else {
-        this.messageHandler.showError("Error downloading .gitattributes File.");
+        this.messageService.showError("Error downloading .gitattributes File.");
       }
     }
   }

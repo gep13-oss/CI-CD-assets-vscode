@@ -2,13 +2,13 @@ import { workspace } from "vscode";
 import * as fs from "fs";
 import * as path from "path"
 import { injectable, inject } from "inversify";
-import { MessageHandler } from "./message-handler";
+import { MessageService } from "./message-service";
 import TYPES from "./types";
 
 @injectable()
-export class FileSystemHandler {
+export class FileSystemService {
   constructor(
-    @inject(TYPES.MessageHandler) private messageHandler: MessageHandler
+    @inject(TYPES.MessageService) private messageService: MessageService
   ) {}
 
   combinePath(directoryPath: string, filePath: string) {
@@ -19,7 +19,7 @@ export class FileSystemHandler {
     if (workspace.rootPath !== undefined) {
       return workspace.rootPath;
     } else {
-      this.messageHandler.showError("No workspace is currently open.");
+      this.messageService.showError("No workspace is currently open.");
       return "";
     }
   }
@@ -27,7 +27,7 @@ export class FileSystemHandler {
   async checkForExisting(path: string): Promise<boolean> {
     if (fs.existsSync(path)) {
       var message = `Overwrite the existing \'${path}\' file in this folder?`;
-      var option = await this.messageHandler.showWarning(message, "Overwrite");
+      var option = await this.messageService.showWarning(message, "Overwrite");
       return option === "Overwrite";
     }
 

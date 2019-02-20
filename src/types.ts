@@ -1,10 +1,10 @@
 const TYPES = {
   Command: Symbol("Command"),
   CommandManager: Symbol("CommandManager"),
-  MessageHandler: Symbol("MessageHandler"),
-  FileSystemHandler: Symbol("FileSystemHandler"),
-  NetworkHandler: Symbol("NetworkHandler"),
-  ConfigurationHandler: Symbol("ConfigurationHandler")
+  MessageService: Symbol("MessageService"),
+  FileSystemService: Symbol("FileSystemService"),
+  NetworkService: Symbol("NetworkService"),
+  ConfigurationService: Symbol("ConfigurationService")
 };
 
 export default TYPES;

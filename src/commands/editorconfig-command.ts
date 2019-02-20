@@ -1,18 +1,18 @@
 import { injectable, inject } from "inversify";
 import { ICommand } from "./icommand";
-import { MessageHandler } from "../message-handler";
-import { FileSystemHandler } from "../filesystem-handler";
-import { NetworkHandler } from "../network-handler";
-import { ConfigurationHandler } from "../configuration-handler";
+import { MessageService } from "../message-service";
+import { FileSystemService } from "../filesystem-service";
+import { NetworkService } from "../network-service";
+import { ConfigurationService } from "../configuration-service";
 import TYPES from "../types";
 
 @injectable()
 export class EditorConfigCommand implements ICommand {
   constructor(
-    @inject(TYPES.MessageHandler) private messageHandler: MessageHandler,
-    @inject(TYPES.FileSystemHandler) private fileSystemHandler: FileSystemHandler,
-    @inject(TYPES.NetworkHandler) private networkHandler: NetworkHandler,
-    @inject(TYPES.ConfigurationHandler) private configurationHandler: ConfigurationHandler
+    @inject(TYPES.MessageService) private messageService: MessageService,
+    @inject(TYPES.FileSystemService) private fileSystemService: FileSystemService,
+    @inject(TYPES.NetworkService) private networkService: NetworkService,
+    @inject(TYPES.ConfigurationService) private configurationService: ConfigurationService
   ) {}
 
   get id() {
@@ -20,32 +20,32 @@ export class EditorConfigCommand implements ICommand {
   }
 
   async execute() {
-    var workspaceRootPath = this.fileSystemHandler.checkForWorkspace();
+    var workspaceRootPath = this.fileSystemService.checkForWorkspace();
     if (workspaceRootPath !== "") {
-      var editorConfigFilePath = this.fileSystemHandler.combinePath(workspaceRootPath, ".editorconfig");
-      var ready = await this.fileSystemHandler.checkForExisting(editorConfigFilePath);
+      var editorConfigFilePath = this.fileSystemService.combinePath(workspaceRootPath, ".editorconfig");
+      var ready = await this.fileSystemService.checkForExisting(editorConfigFilePath);
 
       if (!ready) {
         return;
       }
 
-      var file = this.fileSystemHandler.createWriteStream(editorConfigFilePath);
-      var config = this.configurationHandler.getConfig("cicd");
+      var file = this.fileSystemService.createWriteStream(editorConfigFilePath);
+      var config = this.configurationService.getConfig("cicd");
 
       if (!config) {
-        this.messageHandler.showError("Could not find CI/CD Configuration.");
+        this.messageService.showError("Could not find CI/CD Configuration.");
         return;
       }
 
       var uri = config.urls.editorconfig;
-      var result = await this.networkHandler.downloadFile(uri, file);
+      var result = await this.networkService.downloadFile(uri, file);
 
       if (result) {
-        this.messageHandler.showInformation(
+        this.messageService.showInformation(
           "EditorConfig File downloaded correctly."
         );
       } else {
-        this.messageHandler.showError("Error downloading EditorConfig File.");
+        this.messageService.showError("Error downloading EditorConfig File.");
       }
     }
   }
