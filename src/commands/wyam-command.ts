@@ -21,7 +21,7 @@ export class WyamCommand implements ICommand {
     return "cicd.wyam";
   }
 
-  async execute(...args: any[]) {
+  async execute() {
     var workspaceRootPath = this.fileSystemHandler.checkForWorkspace();
     if (workspaceRootPath !== "") {
       var wyamFilePath = this.fileSystemHandler.combinePath(workspaceRootPath, "config.wyam");

@@ -22,7 +22,7 @@ export class GitHubCommand implements ICommand {
     return "cicd.github";
   }
 
-  async execute(...args: any[]) {
+  async execute() {
     let context = this;
 
     var workspaceRootPath = context.fileSystemHandler.checkForWorkspace();

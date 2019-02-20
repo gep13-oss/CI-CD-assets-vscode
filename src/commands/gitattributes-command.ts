@@ -21,7 +21,7 @@ export class GitAttributesCommand implements ICommand {
     return "cicd.gitattributes";
   }
 
-  async execute(...args: any[]) {
+  async execute() {
     var workspaceRootPath = this.fileSystemHandler.checkForWorkspace();
     if (workspaceRootPath !== "") {
       var gitAttributesFilePath = this.fileSystemHandler.combinePath(

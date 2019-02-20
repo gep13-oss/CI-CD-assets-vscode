@@ -12,7 +12,7 @@ export class AllCommand implements ICommand {
 
    get id() { return "cicd.all"; }
 
-   execute(...args: any[]) {
+   execute() {
     this.messageHandler.showInformation('cicd.all');
   }
 }

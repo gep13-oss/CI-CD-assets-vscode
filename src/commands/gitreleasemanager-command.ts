@@ -21,7 +21,7 @@ export class GitReleaseManagerCommand implements ICommand {
     return "cicd.gitreleasemanager";
   }
 
-  async execute(...args: any[]) {
+  async execute() {
     var workspaceRootPath = this.fileSystemHandler.checkForWorkspace();
     if (workspaceRootPath !== "") {
       var gitReleaseManagerFilePath = this.fileSystemHandler.combinePath(

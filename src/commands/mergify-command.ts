@@ -19,7 +19,7 @@ export class MergifyCommand implements ICommand {
 
    get id() { return "cicd.mergify"; }
 
-   async execute(...args: any[]) {
+   async execute() {
     var workspaceRootPath = this.fileSystemHandler.checkForWorkspace();
       if(workspaceRootPath !== "") {
         var mergifyFilePath = this.fileSystemHandler.combinePath(workspaceRootPath, '.mergify.yml');

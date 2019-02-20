@@ -19,7 +19,7 @@ export class EditorConfigCommand implements ICommand {
     return "cicd.editorconfig";
   }
 
-  async execute(...args: any[]) {
+  async execute() {
     var workspaceRootPath = this.fileSystemHandler.checkForWorkspace();
     if (workspaceRootPath !== "") {
       var editorConfigFilePath = this.fileSystemHandler.combinePath(workspaceRootPath, ".editorconfig");

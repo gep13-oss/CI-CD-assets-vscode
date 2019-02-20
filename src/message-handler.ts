@@ -19,6 +19,6 @@ export class MessageHandler {
     await vscode.window.showInputBox({
       placeHolder: placeHolder,
       value: value
-    });)
+    });
   }
 }

@@ -21,7 +21,7 @@ export class AppVeyorCommand implements ICommand {
     return "cicd.appveyor";
   }
 
-  async execute(...args: any[]) {
+  async execute() {
     var workspaceRootPath = this.fileSystemHandler.checkForWorkspace();
     if (workspaceRootPath !== "") {
       var appveyorFilePath = this.fileSystemHandler.combinePath(

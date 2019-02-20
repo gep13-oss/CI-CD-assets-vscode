@@ -21,7 +21,7 @@ export class DependabotCommand implements ICommand {
     return "cicd.dependabot";
   }
 
-  async execute(...args: any[]) {
+  async execute() {
     var workspaceRootPath = this.fileSystemHandler.checkForWorkspace();
     if (workspaceRootPath !== "") {
       var dependabotFolderPath = this.fileSystemHandler.combinePath(workspaceRootPath, ".dependabot");

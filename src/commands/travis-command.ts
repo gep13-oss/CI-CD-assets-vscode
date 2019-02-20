@@ -21,7 +21,7 @@ export class TravisCommand implements ICommand {
     return "cicd.travis";
   }
 
-  async execute(...args: any[]) {
+  async execute() {
     var workspaceRootPath = this.fileSystemHandler.checkForWorkspace();
     if (workspaceRootPath !== "") {
       var travisFilePath = this.fileSystemHandler.combinePath(workspaceRootPath, ".travis.yml");
