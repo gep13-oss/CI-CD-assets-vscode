@@ -8,39 +8,6 @@ export function activate(context: vscode.ExtensionContext) {
   cmdManager.registerCommands(context);
 }
 
-// async function downloadTravisFile(): Promise<void> {
-//
-// }
-
-// async function downloadGitReleaseManagerFile(): Promise<void> {
-//   var workspaceRootPath = checkForWorkspace();
-//   if(workspaceRootPath !== "") {
-//     var gitReleaseManagerFilePath = path.join(workspaceRootPath, 'GitReleaseManager.yaml');
-//     var ready = await checkForExisting(gitReleaseManagerFilePath);
-
-//     if(!ready) {
-//       return;
-//     }
-
-//     var file = fs.createWriteStream(gitReleaseManagerFilePath);
-//     var config = workspace.getConfiguration('cicd');
-
-//     if (!config) {
-//       window.showErrorMessage("Could not find CI/CD Configuration.");
-//       return;
-//     }
-
-//     var uri = config.urls.gitreleasemanager;
-//     var result = await downloadFile(uri, file);
-
-//     if(result) {
-//       window.showInformationMessage("GitReleaseManager.yaml File downloaded correctly.");
-//     } else {
-//       window.showErrorMessage("Error downloading GitReleaseManager.yaml File.");
-//     }
-//   }
-// }
-
 // async function downloadWyamFile(): Promise<void> {
 //   var workspaceRootPath = checkForWorkspace();
 //   if(workspaceRootPath !== "") {
