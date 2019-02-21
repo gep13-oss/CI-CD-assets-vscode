@@ -10,11 +10,9 @@ import TYPES from "../types";
 export class AppVeyorCommand implements ICommand {
   constructor(
     @inject(TYPES.MessageService) private messageService: MessageService,
-    @inject(TYPES.FileSystemService)
-    private fileSystemService: FileSystemService,
+    @inject(TYPES.FileSystemService) private fileSystemService: FileSystemService,
     @inject(TYPES.NetworkService) private networkService: NetworkService,
-    @inject(TYPES.ConfigurationService)
-    private configurationService: ConfigurationService
+    @inject(TYPES.ConfigurationService) private configurationService: ConfigurationService
   ) {}
 
   get id() {
@@ -24,33 +22,19 @@ export class AppVeyorCommand implements ICommand {
   async execute() {
     var workspaceRootPath = this.fileSystemService.checkForWorkspace();
     if (workspaceRootPath !== "") {
-      var appveyorFilePath = this.fileSystemService.combinePath(
-        workspaceRootPath,
-        ".appveyor.yml"
-      );
-      var ready = await this.fileSystemService.checkForExisting(
-        appveyorFilePath
-      );
+      var appveyorFilePath = this.fileSystemService.combinePath(workspaceRootPath, ".appveyor.yml");
+      var ready = await this.fileSystemService.checkForExisting(appveyorFilePath);
 
       if (!ready) {
         return;
       }
 
       var file = this.fileSystemService.createWriteStream(appveyorFilePath);
-      var config = this.configurationService.getConfig("cicd");
-
-      if (!config) {
-        this.messageService.showError("Could not find CI/CD Configuration.");
-        return;
-      }
-
-      var uri = config.urls.appveyor;
+      var uri = this.configurationService.getConfigSection("cicd", "appveyor");
       var result = await this.networkService.downloadFile(uri, file);
 
       if (result) {
-        this.messageService.showInformation(
-          ".appveyor.yml File downloaded correctly."
-        );
+        this.messageService.showInformation(".appveyor.yml File downloaded correctly.");
       } else {
         this.messageService.showError("Error downloading .appveyor.yml File.");
       }

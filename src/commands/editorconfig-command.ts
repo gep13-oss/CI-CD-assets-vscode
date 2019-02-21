@@ -30,20 +30,11 @@ export class EditorConfigCommand implements ICommand {
       }
 
       var file = this.fileSystemService.createWriteStream(editorConfigFilePath);
-      var config = this.configurationService.getConfig("cicd");
-
-      if (!config) {
-        this.messageService.showError("Could not find CI/CD Configuration.");
-        return;
-      }
-
-      var uri = config.urls.editorconfig;
+      var uri = this.configurationService.getConfigSection("cicd", "editorconfig");
       var result = await this.networkService.downloadFile(uri, file);
 
       if (result) {
-        this.messageService.showInformation(
-          "EditorConfig File downloaded correctly."
-        );
+        this.messageService.showInformation("EditorConfig File downloaded correctly.");
       } else {
         this.messageService.showError("Error downloading EditorConfig File.");
       }

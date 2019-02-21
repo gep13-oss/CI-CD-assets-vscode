@@ -10,11 +10,9 @@ import TYPES from "../types";
 export class GitAttributesCommand implements ICommand {
   constructor(
     @inject(TYPES.MessageService) private messageService: MessageService,
-    @inject(TYPES.FileSystemService)
-    private fileSystemService: FileSystemService,
+    @inject(TYPES.FileSystemService) private fileSystemService: FileSystemService,
     @inject(TYPES.NetworkService) private networkService: NetworkService,
-    @inject(TYPES.ConfigurationService)
-    private configurationService: ConfigurationService
+    @inject(TYPES.ConfigurationService) private configurationService: ConfigurationService
   ) {}
 
   get id() {
@@ -24,10 +22,7 @@ export class GitAttributesCommand implements ICommand {
   async execute() {
     var workspaceRootPath = this.fileSystemService.checkForWorkspace();
     if (workspaceRootPath !== "") {
-      var gitAttributesFilePath = this.fileSystemService.combinePath(
-        workspaceRootPath,
-        ".gitattributes"
-      );
+      var gitAttributesFilePath = this.fileSystemService.combinePath(workspaceRootPath, ".gitattributes");
       var ready = await this.fileSystemService.checkForExisting(gitAttributesFilePath);
 
       if (!ready) {
@@ -35,20 +30,11 @@ export class GitAttributesCommand implements ICommand {
       }
 
       var file = this.fileSystemService.createWriteStream(gitAttributesFilePath);
-      var config = this.configurationService.getConfig("cicd");
-
-      if (!config) {
-        this.messageService.showError("Could not find CI/CD Configuration.");
-        return;
-      }
-
-      var uri = config.urls.gitattributes;
+      var uri = this.configurationService.getConfigSection("cicd", "gitattributes");
       var result = await this.networkService.downloadFile(uri, file);
 
       if (result) {
-        this.messageService.showInformation(
-          ".gitattributes File downloaded correctly."
-        );
+        this.messageService.showInformation(".gitattributes File downloaded correctly.");
       } else {
         this.messageService.showError("Error downloading .gitattributes File.");
       }

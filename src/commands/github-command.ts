@@ -11,11 +11,9 @@ const replace = require('replace-in-file');
 export class GitHubCommand implements ICommand {
   constructor(
     @inject(TYPES.MessageService) private messageService: MessageService,
-    @inject(TYPES.FileSystemService)
-    private fileSystemService: FileSystemService,
+    @inject(TYPES.FileSystemService) private fileSystemService: FileSystemService,
     @inject(TYPES.NetworkService) private networkService: NetworkService,
-    @inject(TYPES.ConfigurationService)
-    private configurationService: ConfigurationService
+    @inject(TYPES.ConfigurationService) private configurationService: ConfigurationService
   ) {}
 
   get id() {
@@ -34,14 +32,7 @@ export class GitHubCommand implements ICommand {
         context.fileSystemService.directoryCreate(gitHubFolderPath);
       }
 
-      var config = context.configurationService.getConfig("cicd");
-
-      if (!config) {
-        context.messageService.showError("Could not find CI/CD Configuration.");
-        return;
-      }
-
-      const gitHubFiles = config.urls.github;
+      const gitHubFiles = this.configurationService.getConfigSection("cicd", "github");
 
       Promise.all(
         gitHubFiles.map(async gitHubFile => {
@@ -60,9 +51,7 @@ export class GitHubCommand implements ICommand {
         results.forEach(result => {
           var castResult = result as any;
           if (castResult.success) {
-            context.messageService.showInformation(
-              `${castResult.name} File downloaded correctly.`
-            );
+            context.messageService.showInformation(`${castResult.name} File downloaded correctly.`);
           } else {
             context.messageService.showError(
               `Error downloading ${castResult.name} File.`

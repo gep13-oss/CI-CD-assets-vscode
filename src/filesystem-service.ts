@@ -1,6 +1,6 @@
 import { workspace } from "vscode";
 import * as fs from "fs";
-import * as path from "path"
+import * as path from "path";
 import { injectable, inject } from "inversify";
 import { MessageService } from "./message-service";
 import TYPES from "./types";
@@ -39,7 +39,7 @@ export class FileSystemService {
   }
 
   directoryExists(path: string) {
-    return fs.existsSync(path)
+    return fs.existsSync(path);
   }
 
   directoryCreate(path: string) {

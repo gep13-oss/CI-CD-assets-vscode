@@ -10,11 +10,9 @@ import TYPES from "../types";
 export class GitIgnoreCommand implements ICommand {
   constructor(
     @inject(TYPES.MessageService) private messageService: MessageService,
-    @inject(TYPES.FileSystemService)
-    private fileSystemService: FileSystemService,
+    @inject(TYPES.FileSystemService) private fileSystemService: FileSystemService,
     @inject(TYPES.NetworkService) private networkService: NetworkService,
-    @inject(TYPES.ConfigurationService)
-    private configurationService: ConfigurationService
+    @inject(TYPES.ConfigurationService) private configurationService: ConfigurationService
   ) {}
 
   get id() {
@@ -32,14 +30,7 @@ export class GitIgnoreCommand implements ICommand {
       }
 
       var file = this.fileSystemService.createWriteStream(gitIgnoreFilePath);
-      var config = this.configurationService.getConfig("cicd");
-
-      if (!config) {
-        this.messageService.showError("Could not find CI/CD Configuration.");
-        return;
-      }
-
-      var uri = config.urls.gitignore;
+      var uri = this.configurationService.getConfigSection("cicd", "gitignore");
       var result = await this.networkService.downloadFile(uri, file);
 
       if (result) {

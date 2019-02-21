@@ -3,10 +3,7 @@ import * as request from "request";
 
 @injectable()
 export class NetworkService {
-  downloadFile(
-    uriToDownload: string,
-    stream: NodeJS.WritableStream
-  ): Thenable<boolean> {
+  downloadFile(uriToDownload: string, stream: NodeJS.WritableStream): Thenable<boolean> {
     return new Promise((resolve, reject) => {
       request
         .get(uriToDownload, { timeout: 4000 })

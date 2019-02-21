@@ -1,50 +1,43 @@
 import { injectable, inject } from "inversify";
 import { ICommand } from "./icommand";
-import { MessageService } from '../message-service';
+import { MessageService } from "../message-service";
 import { FileSystemService } from "../filesystem-service";
 import { NetworkService } from "../network-service";
 import { ConfigurationService } from "../configuration-service";
-import TYPES from '../types';
+import TYPES from "../types";
 
- @injectable()
+@injectable()
 export class MergifyCommand implements ICommand {
   constructor(
     @inject(TYPES.MessageService) private messageService: MessageService,
-    @inject(TYPES.FileSystemService)
-    private fileSystemService: FileSystemService,
+    @inject(TYPES.FileSystemService) private fileSystemService: FileSystemService,
     @inject(TYPES.NetworkService) private networkService: NetworkService,
-    @inject(TYPES.ConfigurationService)
-    private configurationService: ConfigurationService
+    @inject(TYPES.ConfigurationService) private configurationService: ConfigurationService
   ) {}
 
-   get id() { return "cicd.mergify"; }
+  get id() {
+    return "cicd.mergify";
+  }
 
-   async execute() {
+  async execute() {
     var workspaceRootPath = this.fileSystemService.checkForWorkspace();
-      if(workspaceRootPath !== "") {
-        var mergifyFilePath = this.fileSystemService.combinePath(workspaceRootPath, '.mergify.yml');
-        var ready = await this.fileSystemService.checkForExisting(mergifyFilePath);
+    if (workspaceRootPath !== "") {
+      var mergifyFilePath = this.fileSystemService.combinePath(workspaceRootPath, ".mergify.yml");
+      var ready = await this.fileSystemService.checkForExisting(mergifyFilePath);
 
-        if(!ready) {
-          return;
-        }
-
-        var file = this.fileSystemService.createWriteStream(mergifyFilePath);
-        var config = this.configurationService.getConfig('cicd');
-
-        if (!config) {
-          this.messageService.showError("Could not find CI/CD Configuration.");
-          return;
-        }
-
-        var uri = config.urls.mergify;
-        var result = await this.networkService.downloadFile(uri, file);
-
-        if(result) {
-          this.messageService.showInformation(".mergify.yml File downloaded correctly.");
-        } else {
-          this.messageService.showError("Error downloading .mergify.yml File.");
-        }
+      if (!ready) {
+        return;
       }
+
+      var file = this.fileSystemService.createWriteStream(mergifyFilePath);
+      var uri = this.configurationService.getConfigSection("cicd", "mergify");
+      var result = await this.networkService.downloadFile(uri, file);
+
+      if (result) {
+        this.messageService.showInformation(".mergify.yml File downloaded correctly.");
+      } else {
+        this.messageService.showError("Error downloading .mergify.yml File.");
+      }
+    }
   }
 }

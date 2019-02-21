@@ -10,11 +10,9 @@ import TYPES from "../types";
 export class GitReleaseManagerCommand implements ICommand {
   constructor(
     @inject(TYPES.MessageService) private messageService: MessageService,
-    @inject(TYPES.FileSystemService)
-    private fileSystemService: FileSystemService,
+    @inject(TYPES.FileSystemService) private fileSystemService: FileSystemService,
     @inject(TYPES.NetworkService) private networkService: NetworkService,
-    @inject(TYPES.ConfigurationService)
-    private configurationService: ConfigurationService
+    @inject(TYPES.ConfigurationService) private configurationService: ConfigurationService
   ) {}
 
   get id() {
@@ -24,10 +22,7 @@ export class GitReleaseManagerCommand implements ICommand {
   async execute() {
     var workspaceRootPath = this.fileSystemService.checkForWorkspace();
     if (workspaceRootPath !== "") {
-      var gitReleaseManagerFilePath = this.fileSystemService.combinePath(
-        workspaceRootPath,
-        "GitReleaseManager.yaml"
-      );
+      var gitReleaseManagerFilePath = this.fileSystemService.combinePath(workspaceRootPath, "GitReleaseManager.yaml");
       var ready = await this.fileSystemService.checkForExisting(gitReleaseManagerFilePath);
 
       if (!ready) {
@@ -35,24 +30,13 @@ export class GitReleaseManagerCommand implements ICommand {
       }
 
       var file = this.fileSystemService.createWriteStream(gitReleaseManagerFilePath);
-      var config = this.configurationService.getConfig("cicd");
-
-      if (!config) {
-        this.messageService.showError("Could not find CI/CD Configuration.");
-        return;
-      }
-
-      var uri = config.urls.gitreleasemanager;
+      var uri = this.configurationService.getConfigSection("cicd", "gitreleasemanager");
       var result = await this.networkService.downloadFile(uri, file);
 
       if (result) {
-        this.messageService.showInformation(
-          "GitReleaseManager.yaml File downloaded correctly."
-        );
+        this.messageService.showInformation("GitReleaseManager.yaml File downloaded correctly.");
       } else {
-        this.messageService.showError(
-          "Error downloading GitReleaseManager.yaml File."
-        );
+        this.messageService.showError("Error downloading GitReleaseManager.yaml File.");
       }
     }
   }
