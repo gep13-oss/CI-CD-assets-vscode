@@ -8,5 +8,17 @@
         "**/bower_components": true,
         "logs/": true,
         "out/": true
-    }
+    },
+    "cSpell.words": [
+        "Dependabot",
+        "Mergify",
+        "Veyor",
+        "Wyam",
+        "cicd",
+        "editorconfig",
+        "gitattributes",
+        "gitignore",
+        "icommand",
+        "inversify"
+    ]
 }
