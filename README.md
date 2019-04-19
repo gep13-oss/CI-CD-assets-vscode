@@ -1,6 +1,6 @@
 # CI/CD Assets Visual Studio Code Extension
 
-This extension brings support for [CI/CD Assets](https://github.com/gep13/CI-CD-assets) to Visual Studio Code.
+This extension brings support for [CI/CD Assets](https://github.com/gep13-oss/CI-CD-assets) to Visual Studio Code.
 
 ## Table of Contents
 
@@ -16,7 +16,7 @@ This extension brings support for [CI/CD Assets](https://github.com/gep13/CI-CD-
 
 CI/CD Assets is a collection of files that are useful when setting up a CI/CD pipeline.
 
-For more information about [CI/CD Assets](https://github.com/gep13/CI-CD-assets), please see the [source code repository](https://github.com/gep13/CI-CD-assets).
+For more information about [CI/CD Assets](https://github.com/gep13-oss/CI-CD-assets), please see the [source code repository](https://github.com/gep13-oss/CI-CD-assets).
 
 ## Commands
 
@@ -51,10 +51,10 @@ You can find the documentation that is available for this project [here](https:/
 
 ## Contributing
 
-If you would like to see any features added for this VS Code Extension, feel free to raise an [issue](https://github.com/gep13/CI-CD-assets-vscode/issues), and if possible, a follow up pull request.
+If you would like to see any features added for this VS Code Extension, feel free to raise an [issue](https://github.com/gep13-oss/CI-CD-assets-vscode/issues), and if possible, a follow up pull request.
 
 You can also join in the Gitter Chat [![Join the chat at https://gitter.im/gep13-oss/community](https://badges.gitter.im/gep13-oss/community.svg)](https://gitter.im/gep13-oss/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 ## Releases
 
-To find out what was released in each version of this extension, check out the [releases](https://github.com/gep13/CI-CD-assets-vscode/releases) page.
+To find out what was released in each version of this extension, check out the [releases](https://github.com/gep13-oss/CI-CD-assets-vscode/releases) page.
