@@ -8,13 +8,13 @@
     <title>CI/CD Assets VSCode extension</title>
     <authors>Gary Ewan Park</authors>
     <!-- projectUrl is required for the community feed -->
-    <projectUrl>https://github.com/gep13/CI-CD-assets-vscode</projectUrl>
-    <iconUrl>https://cdn.jsdelivr.net/gh/gep13/CI-CD-assets-vscode@e50644910e327ab525702c935f36f697117f5dd7/images/cicd.png</iconUrl>
+    <projectUrl>https://github.com/gep13-oss/CI-CD-assets-vscode</projectUrl>
+    <iconUrl>https://cdn.jsdelivr.net/gh/gep13-oss/CI-CD-assets-vscode@e50644910e327ab525702c935f36f697117f5dd7/images/cicd.png</iconUrl>
     <copyright>Copyright (c) 2018 Gary Ewan Park</copyright>
-    <licenseUrl>https://github.com/gep13/CI-CD-assets-vscode/blob/develop/LICENSE</licenseUrl>
+    <licenseUrl>https://github.com/gep13-oss/CI-CD-assets-vscode/blob/develop/LICENSE</licenseUrl>
     <requireLicenseAcceptance>true</requireLicenseAcceptance>
-    <projectSourceUrl>https://github.com/gep13/CI-CD-assets-vscode</projectSourceUrl>
-    <bugTrackerUrl>https://github.com/gep13/CI-CD-assets-vscode/issues</bugTrackerUrl>
+    <projectSourceUrl>https://github.com/gep13-oss/CI-CD-assets-vscode</projectSourceUrl>
+    <bugTrackerUrl>https://github.com/gep13-oss/CI-CD-assets-vscode/issues</bugTrackerUrl>
     <tags>CI-CD-assets-vscode vscode extension</tags>
     <summary>CI/CD Assets Extension for Visual Studio Code</summary>
     <description>
@@ -35,9 +35,10 @@ The CI/CD Assets Visual Studio Code provides the following commands:
 - `CICD: Download all files`
     </description>
     <releaseNotes>
-Full release notes found on [GitHub Release Page](https://github.com/gep13/CI-CD-assets-vscode/releases)</releaseNotes>
+Full release notes found on [GitHub Release Page](https://github.com/gep13-oss/CI-CD-assets-vscode/releases)</releaseNotes>
     <dependencies>
-      <dependency id="vscode" version="1.24.0" /> <!-- Should be set to the minimum version the extension supports -->
+      <dependency id="vscode" version="1.33.0" /> <!-- Should be set to the minimum version the extension supports -->
+      <dependency id="chocolatey-vscode.extension" version="1.0.0" />
     </dependencies>
   </metadata>
   <!-- Files will be added during build -->

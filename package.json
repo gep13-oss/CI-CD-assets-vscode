@@ -10,12 +10,12 @@
 		"name": "gep13"
 	},
 	"bugs": {
-		"url": "https://github.com/gep13/CI-CD-assets-vscode/issues"
+		"url": "https://github.com/gep13-oss/CI-CD-assets-vscode/issues"
 	},
-	"homepage": "https://github.com/gep13/CI-CD-assets-vscode",
+	"homepage": "https://github.com/gep13-oss/CI-CD-assets-vscode",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/gep13/CI-CD-assets-vscode"
+		"url": "https://github.com/gep13-oss/CI-CD-assets-vscode"
 	},
 	"main": "./out/extension",
 	"galleryBanner": {
@@ -50,31 +50,31 @@
 					"cicd.urls": {
 						"type": "object",
 						"default": {
-							"editorconfig": "https://raw.githubusercontent.com/gep13/CI-CD-assets/master/.editorconfig",
-							"appveyor": "https://raw.githubusercontent.com/gep13/CI-CD-assets/master/.appveyor.yml",
-							"gitattributes": "https://raw.githubusercontent.com/gep13/CI-CD-assets/master/.gitattributes",
-							"gitignore": "https://raw.githubusercontent.com/gep13/CI-CD-assets/master/.gitignore",
-							"mergify": "https://raw.githubusercontent.com/gep13/CI-CD-assets/master/.mergify.yml",
-							"travis": "https://raw.githubusercontent.com/gep13/CI-CD-assets/master/.travis.yml",
-							"gitreleasemanager": "https://raw.githubusercontent.com/gep13/CI-CD-assets/master/GitReleaseManager.yaml",
-							"wyam": "https://raw.githubusercontent.com/gep13/CI-CD-assets/master/config.wyam",
-							"dependabot": "https://raw.githubusercontent.com/gep13/CI-CD-assets/master/.dependabot/config.yml",
+							"editorconfig": "https://raw.githubusercontent.com/gep13-oss/CI-CD-assets/master/.editorconfig",
+							"appveyor": "https://raw.githubusercontent.com/gep13-oss/CI-CD-assets/master/.appveyor.yml",
+							"gitattributes": "https://raw.githubusercontent.com/gep13-oss/CI-CD-assets/master/.gitattributes",
+							"gitignore": "https://raw.githubusercontent.com/gep13-oss/CI-CD-assets/master/.gitignore",
+							"mergify": "https://raw.githubusercontent.com/gep13-oss/CI-CD-assets/master/.mergify.yml",
+							"travis": "https://raw.githubusercontent.com/gep13-oss/CI-CD-assets/master/.travis.yml",
+							"gitreleasemanager": "https://raw.githubusercontent.com/gep13-oss/CI-CD-assets/master/GitReleaseManager.yaml",
+							"wyam": "https://raw.githubusercontent.com/gep13-oss/CI-CD-assets/master/config.wyam",
+							"dependabot": "https://raw.githubusercontent.com/gep13-oss/CI-CD-assets/master/.dependabot/config.yml",
 							"github": [
 								{
 									"name": "CODEOFCONDUCT.md",
-									"url": "https://raw.githubusercontent.com/gep13/CI-CD-assets/master/.github/CODEOFCONDUCT.md"
+									"url": "https://raw.githubusercontent.com/gep13-oss/CI-CD-assets/master/.github/CODEOFCONDUCT.md"
 								},
 								{
 									"name": "CONTRIBUTING.md",
-									"url": "https://raw.githubusercontent.com/gep13/CI-CD-assets/master/.github/CONTRIBUTING.md"
+									"url": "https://raw.githubusercontent.com/gep13-oss/CI-CD-assets/master/.github/CONTRIBUTING.md"
 								},
 								{
 									"name": "ISSUE_TEMPLATE.md",
-									"url": "https://raw.githubusercontent.com/gep13/CI-CD-assets/master/.github/ISSUE_TEMPLATE.md"
+									"url": "https://raw.githubusercontent.com/gep13-oss/CI-CD-assets/master/.github/ISSUE_TEMPLATE.md"
 								},
 								{
 									"name": "PULL_REQUEST_TEMPLATE.md",
-									"url": "https://raw.githubusercontent.com/gep13/CI-CD-assets/master/.github/PULL_REQUEST_TEMPLATE.md"
+									"url": "https://raw.githubusercontent.com/gep13-oss/CI-CD-assets/master/.github/PULL_REQUEST_TEMPLATE.md"
 								}
 							]
 						},
@@ -83,56 +83,56 @@
 							"editorconfig": {
 								"type": "string",
 								"description": "The URL to download the EditorConfig file from.",
-								"default": "https://raw.githubusercontent.com/gep13/CI-CD-assets/master/.editorconfig"
+								"default": "https://raw.githubusercontent.com/gep13-oss/CI-CD-assets/master/.editorconfig"
 							},
 							"appveyor": {
 								"type": "string",
 								"description": "The URL to download the AppVeyor file from.",
-								"default": "https://raw.githubusercontent.com/gep13/CI-CD-assets/master/.appveyor.yml"
+								"default": "https://raw.githubusercontent.com/gep13-oss/CI-CD-assets/master/.appveyor.yml"
 							},
 							"gitattributes": {
 								"type": "string",
 								"description": "The URL to download the .gitattributes file from.",
-								"default": "https://raw.githubusercontent.com/gep13/CI-CD-assets/master/.gitattributes"
+								"default": "https://raw.githubusercontent.com/gep13-oss/CI-CD-assets/master/.gitattributes"
 							},
 							"gitignore": {
 								"type": "string",
 								"description": "The URL to download the .gitignore file from.",
-								"default": "https://raw.githubusercontent.com/gep13/CI-CD-assets/master/.gitignore"
+								"default": "https://raw.githubusercontent.com/gep13-oss/CI-CD-assets/master/.gitignore"
 							},
 							"mergify": {
 								"type": "string",
 								"description": "The URL to download the .mergify.yml file from",
-								"default": "https://raw.githubusercontent.com/gep13/CI-CD-assets/master/.mergify.yml"
+								"default": "https://raw.githubusercontent.com/gep13-oss/CI-CD-assets/master/.mergify.yml"
 							},
 							"travis": {
 								"type": "string",
 								"description": "The URL to download the .travis.yml file from",
-								"default": "https://raw.githubusercontent.com/gep13/CI-CD-assets/master/.travis.yml"
+								"default": "https://raw.githubusercontent.com/gep13-oss/CI-CD-assets/master/.travis.yml"
 							},
 							"gitreleasemanager": {
 								"type": "string",
 								"description": "The URL to download the GitReleaseManager.yaml file from",
-								"default": "https://raw.githubusercontent.com/gep13/CI-CD-assets/master/GitReleaseManager.yaml"
+								"default": "https://raw.githubusercontent.com/gep13-oss/CI-CD-assets/master/GitReleaseManager.yaml"
 							},
 							"wyam": {
 								"type": "string",
 								"description": "The URL to download the config.wyam file from",
-								"default": "https://raw.githubusercontent.com/gep13/CI-CD-assets/master/config.wyam"
+								"default": "https://raw.githubusercontent.com/gep13-oss/CI-CD-assets/master/config.wyam"
 							},
 							"dependabot": {
 								"type": "string",
 								"description": "The URL to download the dependabot config file from",
-								"default": "https://raw.githubusercontent.com/gep13/CI-CD-assets/master/.dependabot/config.yml"
+								"default": "https://raw.githubusercontent.com/gep13-oss/CI-CD-assets/master/.dependabot/config.yml"
 							},
 							"github": {
 								"type": "array",
 								"description": "Array of URL's to be placed in .github folder",
 								"default": [
-									"https://raw.githubusercontent.com/gep13/CI-CD-assets/master/.github/CODEOFCONDUCT.md",
-									"https://raw.githubusercontent.com/gep13/CI-CD-assets/master/.github/CONTRIBUTING.md",
-									"https://raw.githubusercontent.com/gep13/CI-CD-assets/master/.github/ISSUE_TEMPLATE.md",
-									"https://raw.githubusercontent.com/gep13/CI-CD-assets/master/.github/PULL_REQUEST_TEMPLATE.md"
+									"https://raw.githubusercontent.com/gep13-oss/CI-CD-assets/master/.github/CODEOFCONDUCT.md",
+									"https://raw.githubusercontent.com/gep13-oss/CI-CD-assets/master/.github/CONTRIBUTING.md",
+									"https://raw.githubusercontent.com/gep13-oss/CI-CD-assets/master/.github/ISSUE_TEMPLATE.md",
+									"https://raw.githubusercontent.com/gep13-oss/CI-CD-assets/master/.github/PULL_REQUEST_TEMPLATE.md"
 								]
 							}
 						}
@@ -199,20 +199,20 @@
 		"@types/expect": "^1.20.4",
 		"@types/ini": "^1.3.30",
 		"@types/mocha": "^5.2.6",
-		"@types/node": "^11.9.4",
-		"@types/node-fetch": "^2.1.6",
-		"@types/xml2js": "^0.4.3",
-		"expect": "^24.1.0",
-		"mocha": "^6.0.0",
-		"tslint": "^5.12.1",
+		"@types/node": "^11.13.6",
+		"@types/node-fetch": "^2.3.2",
+		"@types/xml2js": "^0.4.4",
+		"expect": "^24.7.1",
+		"mocha": "^6.1.4",
+		"tslint": "^5.16.0",
 		"typemoq": "^2.1.0",
-		"typescript": "^3.3.3",
-		"vscode": "^1.1.29"
+		"typescript": "^3.4.4",
+		"vscode": "^1.1.33"
 	},
 	"dependencies": {
 		"inversify": "^5.0.1",
 		"reflect-metadata": "^0.1.13",
-		"replace-in-file": "^3.4.3",
+		"replace-in-file": "^3.4.4",
 		"request": "^2.87.0"
 	}
 }

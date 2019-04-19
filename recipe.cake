@@ -15,9 +15,9 @@ else
 BuildParameters.SetParameters(context: Context,
                             buildSystem: BuildSystem,
                             title: "CI-CD-assets-vscode",
-                            repositoryOwner: "gep13",
+                            repositoryOwner: "gep13-oss",
                             repositoryName: "CI-CD-assets-vscode",
-                            appVeyorAccountName: "GaryEwanPark",
+                            appVeyorAccountName: "gep13oss",
                             shouldRunGitVersion: true);
 
 BuildParameters.PrintParameters(Context);
