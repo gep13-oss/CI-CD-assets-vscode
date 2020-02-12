@@ -213,6 +213,6 @@
 		"inversify": "^5.0.1",
 		"reflect-metadata": "^0.1.13",
 		"replace-in-file": "^5.0.2",
-		"request": "^2.87.0"
+		"request": "^2.88.2"
 	}
 }
