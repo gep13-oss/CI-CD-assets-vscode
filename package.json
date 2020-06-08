@@ -212,7 +212,7 @@
 	"dependencies": {
 		"inversify": "^5.0.1",
 		"reflect-metadata": "^0.1.13",
-		"replace-in-file": "^6.0.0",
+		"replace-in-file": "^6.1.0",
 		"request": "^2.88.2"
 	}
 }
